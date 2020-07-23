@@ -10,9 +10,7 @@ body {
 
 header {
     width: 100%;
-    height: 170px;
-    position: fixed;
-
+    height: 106px;
     background-color: #2F2F30;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -180,11 +178,21 @@ header {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.header__nav {
+main {
+    width: 100%;
+    height: 1600px;
+    background-color: #FFFFFF;
+}
+
+.main__nav {
+    width: 100%;
+    height: 64px;
+    background-color: #2F2F30;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-top: 1px solid #FFFFFF;
 }
 
-.header_nav {
+.main_nav {
     max-width: 1060px;
     margin-left: auto;
     margin-right: auto;
@@ -192,7 +200,7 @@ header {
     align-items: center;
 }
 
-.header_nav>input {
+.main_nav>input {
     display: none;
 }
 
@@ -211,7 +219,7 @@ header {
     border-right: 1px solid #FFFFFF;
 }
 
-.header_nav>label {
+.main_nav>label {
     border-left: 1px solid #FFFFFF;
     display: block;
     float: left;
@@ -225,8 +233,8 @@ header {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.header_nav>label:hover,
-.header_nav>input:checked+label {
+.main_nav>label:hover,
+.main_nav>input:checked+label {
     background: #6B6B6B;
 }
 
@@ -258,18 +266,18 @@ header {
 }
 
 @media screen and (max-width: 1060px) {
-    .header_nav {
+    .main_nav {
         width: 400px;
     }
 
-    .header_nav>label {
+    .main_nav>label {
         display: none;
     }
 
     .tabs>div {
+        padding: 0;
         width: 400px;
         border: none;
-        padding: 0;
         opacity: 1;
         position: relative;
         transform: none;
@@ -279,5 +287,10 @@ header {
     .tabs>div {
         border-bottom: 1px solid #FEDCBA;
         padding-bottom: .5em;
+    }
+
+
+    #tab-nav-1:checked~.tabs>div:nth-of-type(1) {
+        padding-top: 75px;
     }
 }
