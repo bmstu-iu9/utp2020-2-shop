@@ -295,6 +295,101 @@ main {
     }
 }
 
+/*//////////
+   Форма связи
+//////////*/
+
+.basket {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+}
+
+.feedback_form {
+    width: 50%;
+    font-weight: 200;
+    margin-top: 30px;
+    min-width: 350px;
+}
+
+.form-caption {
+  font-size: 24px;
+  margin-bottom: 0 auto;
+}
+
+.red {
+  color:red;
+}
+
+.feedback_input{
+  width: 345px;
+  height: 41px;
+  padding: 10px;
+  margin-top: 0 auto;
+  background-color: #F1EFEF;
+  border: 2px solid #eee;
+  border-radius: 7px;
+  box-shadow: 0px 3px 2px 0px #ada8a8;
+  font-size: 18px;
+}
+
+.comment {
+  resize: vertical;
+  width: 345px;
+  padding-left: 10px;
+  margin-top: 30px;
+  background-color: #F1EFEF;
+  border: 2px solid #eee;
+  border-radius: 7px;
+  box-shadow: 0px 3px 2px 0px #ada8a8;
+  font-size: 18px;
+}
+
+.button-submit {
+  margin-top: 10px;
+  width: 250px;
+  height: 41px;
+  border: 0px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 2px 0px #ada8a8;
+  background-color: #2764F4;
+  font-size: 20px;
+  color: #FFFFFF;
+}
+
+.radio-button:disabled:before{
+  width: 100px;
+  background-color: #C4C4C4;
+}
+
+.delivery-cost{
+  width: 100%;
+  display: inline-block;
+  text-align: right;
+}
+
+.delivery-comment{
+  padding-left: 24px;
+  font-size: 15px;
+}
+
+.delivery {
+  width: 345px;
+  font-size: 20px;
+  line-height: 0.6;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.basket_contents {
+    width: 50%;
+    font-weight: 200;
+    margin-top: 30px;
+    padding-left: 60px;
+    min-width: 350px;
+}
+
+/*///////////////*/
 
 .center {
     display: flex;
@@ -345,7 +440,7 @@ main {
 }
 
 /*//////////
-    Инфо 
+    Инфо
 //////////*/
 
 
@@ -370,11 +465,11 @@ main {
     font-weight: 300;
     float: left;
     margin-top: 15px;
-    padding-left: 10px; 
+    padding-left: 10px;
 }
 
 .info_container_img {
-    float: left; 
+    float: left;
     background-color: #d6d6d6;
     margin-top: -20px;
     width: 130px;
@@ -398,7 +493,7 @@ main {
 }
 
 /*//////////
-   Отзывы 
+   Отзывы
 //////////*/
 
 .responses {
@@ -409,7 +504,7 @@ main {
     background-color: white;
     box-shadow: 0 0 5px 2px;
     border-radius: 25px;
-    
+
     height: 270px;
     width: 700px;
     padding-left: 5px;
@@ -504,7 +599,7 @@ main {
 	transition: background ease-in-out .5s;
 }
 
-.wrapper label:hover, 
+.wrapper label:hover,
 #slide1:checked ~ .controls label:nth-of-type(1),
 #slide2:checked ~ .controls label:nth-of-type(2),
 #slide3:checked ~ .controls label:nth-of-type(3),
@@ -534,7 +629,7 @@ main {
 }
 
 /*//////////
-   Подвал 
+   Подвал
 //////////*/
 
 
@@ -588,49 +683,49 @@ footer {
     .info_about_company {
         height: 900px;
     }
-    
+
     .container_mini {
         width: 500px;
         height: 170px;
         margin-right: 0px;
     }
-    
+
     .info_container {
         width: 350px;
         margin-top: 20px
     }
-    
+
     .responses_title {
         width: 500px;
     }
-    
+
     .responses_title_bottom {
         margin-left: 0px;
     }
-    
+
     .container {
         max-width: none;
     }
-    
+
     .column {
         float: none;
         margin-bottom: 20px;
         margin-right: 0px;
     }
-    
+
     .column:last-child {
         margin-bottom: 0px;
     }
-    
+
     footer {
         height: 600px;
         text-align: center;
     }
-    
+
     .company_name {
         margin-top: 20px;
     }
-    
+
     .company_name_text {
         margin-top: 20px;
     }
