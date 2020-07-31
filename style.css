@@ -445,7 +445,7 @@ main {
 
 
 .info_about_company {
-    background-image: url(../img/background-info.jpg);
+    background-image: url(img/background-info.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
