@@ -114,7 +114,7 @@ header {
     width: 16px;
     height: 16px;
     background-color: #2F2F30;
-    background-image: url("img/icons/arrow-icon.png");
+    background-image: url(https://raw.githubusercontent.com/bmstu-iu9/utp2020-2-shop/master/img/icons/arrow-icon.png);
 }
 
 .header_select_dropdown {
@@ -300,9 +300,9 @@ main {
 //////////*/
 
 .basket {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap-reverse;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
 }
 
 .feedback_form {
@@ -313,72 +313,106 @@ main {
 }
 
 .form-caption {
-  font-size: 24px;
-  margin-bottom: 0 auto;
+    font-size: 24px;
+    margin-bottom: 0 auto;
 }
 
 .red {
-  color:red;
+    color: red;
 }
 
-.feedback_input{
-  width: 345px;
-  height: 41px;
-  padding: 10px;
-  margin-top: 0 auto;
-  background-color: #F1EFEF;
-  border: 2px solid #eee;
-  border-radius: 7px;
-  box-shadow: 0px 3px 2px 0px #ada8a8;
-  font-size: 18px;
+.feedback_input {
+    width: 345px;
+    height: 41px;
+    padding: 10px;
+    margin-top: 0 auto;
+    background-color: #F1EFEF;
+    border: 2px solid #eee;
+    border-radius: 7px;
+    box-shadow: 0px 3px 2px 0px #ada8a8;
+    font-size: 18px;
 }
 
 .comment {
-  resize: vertical;
-  width: 345px;
-  padding-left: 10px;
-  margin-top: 30px;
-  background-color: #F1EFEF;
-  border: 2px solid #eee;
-  border-radius: 7px;
-  box-shadow: 0px 3px 2px 0px #ada8a8;
-  font-size: 18px;
+    resize: vertical;
+    width: 345px;
+    padding-left: 10px;
+    margin-top: 30px;
+    background-color: #F1EFEF;
+    border: 2px solid #eee;
+    border-radius: 7px;
+    box-shadow: 0px 3px 2px 0px #ada8a8;
+    font-size: 18px;
+}
+
+textarea[type="comment"]::-webkit-input-placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+textarea[type="comment"]:-ms-input-placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+textarea[type="comment"]::-ms-input-placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+textarea[type="comment"]::placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+input[type="text"]::-webkit-input-placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+textarea[type="text"]:-ms-input-placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+textarea[type="text"]::-ms-input-placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+textarea[type="text"]::placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
 }
 
 .button-submit {
-  margin-top: 10px;
-  width: 250px;
-  height: 41px;
-  border: 0px;
-  border-radius: 8px;
-  box-shadow: 0px 3px 2px 0px #ada8a8;
-  background-color: #2764F4;
-  font-size: 20px;
-  color: #FFFFFF;
+    margin-top: 10px;
+    width: 250px;
+    height: 41px;
+    border: 0px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 2px 0px #ada8a8;
+    background-color: #2764F4;
+    font-size: 20px;
+    color: #FFFFFF;
 }
 
-.radio-button:disabled:before{
-  width: 100px;
-  background-color: #C4C4C4;
+.radio-button:disabled:before {
+    width: 100px;
+    background-color: #C4C4C4;
 }
 
-.delivery-cost{
-  width: 100%;
-  display: inline-block;
-  text-align: right;
-}
-
-.delivery-comment{
-  padding-left: 24px;
-  font-size: 15px;
+.delivery-comment {
+    padding-left: 24px;
+    font-size: 15px;
 }
 
 .delivery {
-  width: 345px;
-  font-size: 20px;
-  line-height: 0.6;
-  margin-top: 20px;
-  margin-left: 10px;
+    width: 345px;
+    font-size: 20px;
+    line-height: 0.6;
+    margin-top: 20px;
+    margin-left: 10px;
 }
 
 .basket_contents {
@@ -440,12 +474,12 @@ main {
 }
 
 /*//////////
-    Инфо
+    Инфо 
 //////////*/
 
 
 .info_about_company {
-    background-image: url(img/background-info.jpg);
+    background-image: url(https://raw.githubusercontent.com/bmstu-iu9/utp2020-2-shop/master/img/background-info.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -493,7 +527,7 @@ main {
 }
 
 /*//////////
-   Отзывы
+   Отзывы 
 //////////*/
 
 .responses {
@@ -549,16 +583,16 @@ main {
 //////////*/
 
 .wrapper {
-	height: 350px;
+    height: 350px;
 }
 
-.wrapper > input {
-	display: none;
+.wrapper>input {
+    display: none;
 }
 
 .slider {
-	height: inherit;
-	position: relative;
+    height: inherit;
+    position: relative;
     width: inherit;
 }
 
@@ -568,68 +602,68 @@ main {
 }
 
 .wrapper label {
-	cursor: pointer;
-	display: inline-block;
-	height: 8px;
-	margin: 25px 12px 0 16px;
-	position: relative;
-	width: 8px;
+    cursor: pointer;
+    display: inline-block;
+    height: 8px;
+    margin: 25px 12px 0 16px;
+    position: relative;
+    width: 8px;
 }
 
 .wrapper label:after {
-	border: 2px solid #2F2F30;
-	content: "";
-	display: block;
-	height: 12px;
-	left: -4px;
-	position: absolute;
-	top: -4px;
-	width: 12px;
-	border-radius: 50%;
+    border: 2px solid #2F2F30;
+    content: "";
+    display: block;
+    height: 12px;
+    left: -4px;
+    position: absolute;
+    top: -4px;
+    width: 12px;
+    border-radius: 50%;
 }
 
 .wrapper label {
-	cursor: pointer;
-	display: inline-block;
-	height: 8px;
-	margin: 25px 12px 0 16px;
-	position: relative;
-	width: 8px;
-	border-radius: 50%;
-	transition: background ease-in-out .5s;
+    cursor: pointer;
+    display: inline-block;
+    height: 8px;
+    margin: 25px 12px 0 16px;
+    position: relative;
+    width: 8px;
+    border-radius: 50%;
+    transition: background ease-in-out .5s;
 }
 
 .wrapper label:hover,
-#slide1:checked ~ .controls label:nth-of-type(1),
-#slide2:checked ~ .controls label:nth-of-type(2),
-#slide3:checked ~ .controls label:nth-of-type(3),
-#slide4:checked ~ .controls label:nth-of-type(4),
-#slide5:checked ~ .controls label:nth-of-type(5) {
-	background: #2F2F30;
+#slide1:checked~.controls label:nth-of-type(1),
+#slide2:checked~.controls label:nth-of-type(2),
+#slide3:checked~.controls label:nth-of-type(3),
+#slide4:checked~.controls label:nth-of-type(4),
+#slide5:checked~.controls label:nth-of-type(5) {
+    background: #2F2F30;
 }
 
 .slides {
-	height: inherit;
-	opacity: 0;
-	position: absolute;
-	width: inherit;
-	z-index: 0;
-	transform: scale(1.5);
-	transition: transform ease-in-out .5s, opacity ease-in-out .5s;
+    height: inherit;
+    opacity: 0;
+    position: absolute;
+    width: inherit;
+    z-index: 0;
+    transform: scale(1.5);
+    transition: transform ease-in-out .5s, opacity ease-in-out .5s;
 }
 
-#slide1:checked ~ .slider > .slide1,
-#slide2:checked ~ .slider > .slide2,
-#slide3:checked ~ .slider > .slide3,
-#slide4:checked ~ .slider > .slide4,
-#slide5:checked ~ .slider > .slide5 {
-	opacity: 1;
-	z-index: 1;
-	transform: scale(1);
+#slide1:checked~.slider>.slide1,
+#slide2:checked~.slider>.slide2,
+#slide3:checked~.slider>.slide3,
+#slide4:checked~.slider>.slide4,
+#slide5:checked~.slider>.slide5 {
+    opacity: 1;
+    z-index: 1;
+    transform: scale(1);
 }
 
 /*//////////
-   Подвал
+   Подвал 
 //////////*/
 
 
@@ -729,6 +763,7 @@ footer {
     .company_name_text {
         margin-top: 20px;
     }
+
     .contacts_text {
         margin-left: 30px;
     }
