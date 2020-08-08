@@ -60,29 +60,36 @@ if (feedback_form_el) {
 
 //Submit form
 function submitForm(e) {
-    e.preventDefault();
 
-    //Get values
-    var telephone = getInputVal('telephone');
-    var address = getInputVal('address');
-    var comment = getInputVal('comment');
-    var contact_person = getInputVal('contact_person');
-    var email = getInputVal('email');
-    var delivery;
-    var del1 = document.getElementById('del-1');
-    var del2 = document.getElementById('del-2');
-    var del3 = document.getElementById('del-3');
-    var del4 = document.getElementById('del-4');
-    var del5 = document.getElementById('del-5');
+    if (number_of_purchases <= 0) {
+        alert("Ваша корзина пуста. Перед отправкой заказа добавьте в корзину хотя бы один товар.");
+    } else {
+        alert("Ваша заявка отправлена.");
 
-    if (del1.checked) delivery = "Самовывоз (г. Москва)";
-    else if (del2.checked) delivery = "Доставка СДЭК";
-    else if (del3.checked) delivery = "Доставка ЕМС";
-    else if (del4.checked) delivery = "Доставка Почтой России";
-    else delivery = "Доставка курьером (г. Москва)";
+        e.preventDefault();
 
-    //Save message
-    saveMessage(telephone, address, comment, delivery, contact_person, email);
+        //Get values
+        var telephone = getInputVal('telephone');
+        var address = getInputVal('address');
+        var comment = getInputVal('comment');
+        var contact_person = getInputVal('contact_person');
+        var email = getInputVal('email');
+        var delivery;
+        var del1 = document.getElementById('del-1');
+        var del2 = document.getElementById('del-2');
+        var del3 = document.getElementById('del-3');
+        var del4 = document.getElementById('del-4');
+        var del5 = document.getElementById('del-5');
+
+        if (del1.checked) delivery = "Самовывоз (г. Москва)";
+        else if (del2.checked) delivery = "Доставка СДЭК";
+        else if (del3.checked) delivery = "Доставка ЕМС";
+        else if (del4.checked) delivery = "Доставка Почтой России";
+        else delivery = "Доставка курьером (г. Москва)";
+
+        //Save message
+        saveMessage(telephone, address, comment, delivery, contact_person, email);
+    }
 }
 
 //Function to get form values
