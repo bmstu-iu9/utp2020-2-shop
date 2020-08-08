@@ -17,18 +17,6 @@ function add_PlaystationP() {
     alert("Товар добавлен в корзину.");
 }
 
-
-
-
-//Функция-предупреждение для пустой корзины
-function rename_it() {
-    if (number_of_purchases == 0)
-        alert("Ваша корзина пуста. Перед отправкой заказа добавьте в корзину хотя бы один товар.");
-    else {
-        alert("Ok.");
-    }
-}
-
 var number_of_purchases = 0;
 
 
