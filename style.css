@@ -180,7 +180,7 @@ header {
 
 main {
     width: 100%;
-    height: 1600px;
+    height: 5100px;
     background-color: #FFFFFF;
 }
 
@@ -293,6 +293,73 @@ main {
     #tab-nav-1:checked~.tabs>div:nth-of-type(1) {
         padding-top: 75px;
     }
+}
+
+/*//////////
+   Вкладки с товарами
+//////////*/
+
+/* .tabs {
+	text-align: center;
+} */
+
+.category-name {
+    font-size: 30px;
+    font-weight: 200;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+
+.product-catagory {
+    overflow: hidden;
+}
+
+.product {
+    height: 400px;
+    width: 27%;
+	text-align: center;
+    padding-top: 15px;
+    padding-bottom: 5%;
+    float: left;
+    color: #000000;
+    margin: 30px;
+    border: 2px solid #eee;
+    border-radius: 7px;
+    box-shadow: 0px 3px 2px 0px #ada8a8;
+    border-left: 5px;
+}
+
+.productName {
+    font-size: 20px;
+}
+
+.availabilityIcon {
+    display: inline-block;
+}
+
+.productState {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 15px;
+    font-weight: 200;
+}
+
+.productCost {
+    font-size: 30px;
+    font-weight: 200;
+}
+
+.addPurchase {
+    margin-top: 8px;
+    width: 200px;
+    height: 30px;
+    border: 0px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 2px 0px #ada8a8;
+    background-color: #2764F4;
+    font-size: 18px;
+    color: #FFFFFF;
 }
 
 /*//////////
@@ -474,7 +541,7 @@ textarea[type="text"]::placeholder {
 }
 
 /*//////////
-    Инфо 
+    Инфо
 //////////*/
 
 
@@ -527,7 +594,7 @@ textarea[type="text"]::placeholder {
 }
 
 /*//////////
-   Отзывы 
+   Отзывы
 //////////*/
 
 .responses {
@@ -663,7 +730,7 @@ textarea[type="text"]::placeholder {
 }
 
 /*//////////
-   Подвал 
+   Подвал
 //////////*/
 
 
