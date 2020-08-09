@@ -4,6 +4,7 @@ const fs = require('fs');
 const html = fs.readFileSync("../client/index.html");
 const css = fs.readFileSync('../client/style.css');
 const js = fs.readFileSync('../client/main.js');
+const db = fs.readFileSync('../../res/db.json');
 
 http.createServer((req, res) => {
     switch (req.url) {
@@ -20,6 +21,11 @@ http.createServer((req, res) => {
         case '/main.js':
             res.writeHead(200, { 'Content-Type': 'text/javascript' });
             res.end(js);
+            break;
+
+        case '/res/db.json':
+            res.writeHead(200, { 'Content-Type': 'text/json' });
+            res.end(db);
             break;
 
         default:
