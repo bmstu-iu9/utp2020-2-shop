@@ -243,6 +243,10 @@ main {
     perspective: 600px;
 }
 
+.basket-tab {
+    margin-right: 5px;
+}
+
 .tabs>div {
     width: 1060px;
     position: absolute;
@@ -298,10 +302,6 @@ main {
 /*//////////
    Вкладки с товарами
 //////////*/
-
-/* .tabs {
-	text-align: center;
-} */
 
 .category-name {
     font-size: 30px;
@@ -385,7 +385,7 @@ main {
 }
 
 .red {
-    color: red;
+    color: #F42727;
 }
 
 .feedback_input {
@@ -508,7 +508,7 @@ textarea[type="text"]::placeholder {
 
 .container_mini {
     width: 750px;
-    background-color: white;
+    background-color: #FFFFFF;
     margin-bottom: 30px;
     height: 120px;
     margin-right: 310px;
@@ -522,7 +522,7 @@ textarea[type="text"]::placeholder {
 }
 
 .column_r {
-    background-color: white;
+    background-color: #FFFFFF;
     box-shadow: 0 0 5px 2px;
     border-radius: 25px;
 }
@@ -602,7 +602,7 @@ textarea[type="text"]::placeholder {
 }
 
 .response_container {
-    background-color: white;
+    background-color: #FFFFFF;
     box-shadow: 0 0 5px 2px;
     border-radius: 25px;
 
