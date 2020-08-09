@@ -220,6 +220,99 @@ function showGoods(data){
     }
 }
 
+let total = 0;
+
+const countTotal = () => {
+    for (let key of cart.keys()) {
+        total += cart.get(key)['count'] * cart.get(key)['object']['price'];
+    }
+}
+
+//отрисовка корзины
+const renderCart = () => {    
+    var out = '<table> <tr> <th>Наименование</th> <th>Цена, руб</th>';
+    out+='<th>Кол-во, шт</th> <th>Стоимость, руб</th> <th> </th> </tr>';
+    for (let item of cart) {
+        out+='<tr>'
+        out+='<td>'+item[1]['object']['name_of_product'] + '</td>';
+        out+='<td>'+item[1]['object']['price']+'</td>';
+        out+='<td width="150">'+'<button class="button minus" data-id="'+item[0]+'"> </button>';
+        out+=item[1]['count'];
+        out+='<button class="button plus" data-id="'+item[0]+'"> </button>'+'</td>';
+        out+='<td>'+item[1]['object']['price'] * item[1]['count']+'</td>';
+        out+='<td> <button class="button delete" data-id="'+item[0]+'"> </button> </td>';
+        out+='</tr>';
+    };
+    out+='</table> <div class="total">ИТОГО: <span class="total_num">' + total + ' руб.</span> </div>';
+    document.getElementById('list_of_items').innerHTML = out;
+    document.getElementById('empty_cart').style.display = 'none';
+    document.getElementById('clean_cart').style.visibility = 'visible';
+}
+
+const emptyCart = () => {
+    document.getElementById('empty_cart').style.display = 'block';
+    document.getElementById('clean_cart').style.visibility = 'hidden';
+    document.getElementById('list_of_items').innerHTML = '';
+}
+
+emptyCart();
+
+document.onclick = event => {
+    if (event.target.classList.contains('plus')) {
+        plusFunction(event.target.dataset.id);
+    }
+    if (event.target.classList.contains('minus')) {
+        minusFunction(event.target.dataset.id);
+    }
+    if (event.target.classList.contains('delete')) {
+        deleteFunction(event.target.dataset.id);
+    }
+    if (event.target.classList.contains('clean_cart')) {
+        let confirmation = confirm("Очистить корзину?");
+        if (confirmation) {
+            cleanCart();
+        }
+    }
+}
+
+const plusFunction = id => {
+    id = Number(id);
+    if (cart.get(id)['object']['count_of_product'] == cart.get(id)['count']) {
+        alert('Извините! Количество данного товара ограничено. Невозможно добавить товар.');
+    } else {
+        cart.get(id)['count']++;
+        total += cart.get(id)['object']['price'];
+        alert('Товар добавлен в корзину.');
+    }
+    renderCart();
+}
+
+const minusFunction = id => {
+    id = Number(id);
+    if (cart.get(id)['count']-1 == 0) {
+        deleteFunction(id);
+    }
+    cart.get(id)['count']--;
+    total -= cart.get(id)['object']['price'];
+    renderCart();
+}
+
+const deleteFunction = id => {
+    id = Number(id);
+    if (cart.size == 1) {
+        cleanCart();
+        return;
+    }
+    total -= cart.get(id)['count'] * cart.get(id)['object']['price'];
+    cart.delete(id);
+    renderCart();
+}
+
+const cleanCart = () => {
+    cart.clear();
+    total = 0;
+    emptyCart();
+}
 
 var status = function (response) {
     if (response.status !== 200) {
