@@ -1,348 +1,357 @@
 [
 	{
-		"id": 1101,
-		"section": "Playstation",
-		"category": "Приставки",
-		"name_of_product": "PS 4",
-		"price": 14000,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Playstation/Console/ps4.jpg"
-	},
+		"101": {
+			"section": "Playstation",
+			"id": 101,
+			"category": "Приставки",
+			"name_of_product": "PS 4",
+			"price": 14000,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Playstation/Console/ps4.jpg"
+		},
+		"102": {
+            		"id": 102,
+			"section": "Playstation",
+			"category": "Приставки",
+			"name_of_product": "PS 4 Slim",
+			"price": 17000,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Playstation/Console/ps4_slim.jpg"
+		},
+		"103": {
+            		"id": 103,
+			"section": "Playstation",
+			"category": "Приставки",
+			"name_of_product": "PS 4 PRO",
+			"price": 22000,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Playstation/Console/ps4_pro.jpg"
+		},
+		"104": {
+			"id": 104,
+			"section": "Playstation",
+			"category": "Приставки",
+			"name_of_product": "PS Vita",
+			"price": 10000,
+			"state": "Ожидается поступление",
+			"count_of_product": 0,
+			"url": "img/photo-products/Playstation/Console/ps_vita.jpg"
+		},
+		"105": {
+            		"id": 105,
+			"section": "Playstation",
+			"category": "Приставки",
+			"name_of_product": "PS 5",
+			"price": 30000,
+			"state": "Ожидается поступление",
+			"count_of_product": 0,
+			"url": "img/photo-products/Playstation/Console/ps5.jpg"
+		}
+    	},
 	{
-		"id": 1102,
-		"section": "Playstation",
-		"category": "Приставки",
-		"name_of_product": "PS 4 Slim",
-		"price": 17000,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Playstation/Console/ps4_slim.jpg"
-	},
+		"201": {
+            		"id": 201,
+			"section": "Playstation",
+			"category": "Игры",
+			"name_of_product": "Тачки 3: Навстречу победе",
+			"price": 1400,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Playstation/Game/Тачки_3:_Навстречу_победе.jpg"
+		},
+		"202": {
+            		"id": 202,
+			"section": "Playstation",
+			"category": "Игры",
+			"name_of_product": "Horizon Zero Dawn",
+			"price": 600,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Playstation/Game/Horizon_Zero_Dawn.jpg"
+		},
+		"203": {
+            		"id": 203,
+			"section": "Playstation",
+			"category": "Игры",
+			"name_of_product": "The Last of Us",
+			"price": 800,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Playstation/Game/The_Last_of_Us.jpg"
+		}
+    	},
+    	{},
 	{
-		"id": 1103,
-		"section": "Playstation",
-		"category": "Приставки",
-		"name_of_product": "PS 4 PRO",
-		"price": 22000,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Playstation/Console/ps4_pro.jpg"
-	},
+		"401": {
+            		"id": 401,
+			"section": "Nintendo Switch",
+			"category": "Приставки",
+			"name_of_product": "Nintendo Switch V2 128GB",
+			"price": 32000,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Console/Nintendo_Switch_V2_128GB.jpg"
+		},
+		"402": {
+            		"id": 402,
+			"section": "Nintendo Switch",
+			"category": "Приставки",
+			"name_of_product": "Nintendo Switch Lite 128GB",
+			"price": 24000,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Console/Nintendo_Switch_Lite_128GB.png"
+		},
+		"403": {
+           		"id": 403,
+			"section": "Nintendo Switch",
+			"category": "Приставки",
+			"name_of_product": "Nintendo Switch V1 128GB",
+			"price": 26000,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Console/Nintendo_Switch_V1_128GB.png"
+		},
+		"404": {
+           		"id": 404,
+			"section": "Nintendo Switch",
+			"category": "Приставки",
+			"name_of_product": "Nintendo Switch V2",
+			"price": 19500,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Console/Nintendo_Switch_V2.png"
+		}
+   	},
 	{
-		"id": 1104,
-		"section": "Playstation",
-		"category": "Приставки",
-		"name_of_product": "PS Vita",
-		"price": 10000,
-		"state": "Ожидается поступление",
-		"count_of_product": 0,
-		"url": "img/photo-products/Playstation/Console/ps_vita.jpg"
-	},
+		"501": {
+            		"id": 501,
+			"section": "Nintendo Switch",
+			"category": "Игры",
+			"name_of_product": "Street Fighter",
+			"price": 1900,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Game/Street_Fighter.png"
+		},
+		"502": {
+            		"id": 502,
+			"section": "Nintendo Switch",
+			"category": "Игры",
+			"name_of_product": "Rime",
+			"price": 2100,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Game/Rime.png"
+		},
+		"503": {
+            		"id": 503,
+			"section": "Nintendo Switch",
+			"category": "Игры",
+			"name_of_product": "Child of Light/Valiant Hearts",
+			"price": 1800,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Game/Child_of_Light_Valiant_Hearts.png"
+		},
+		"504": {
+            		"id": 504,
+			"section": "Nintendo Switch",
+			"category": "Игры",
+			"name_of_product": "Bayonetta 2 + код на Bayonetta",
+			"price": 2500,
+			"state": "В наличии",
+			"count_of_product": 2,
+			"url": "img/photo-products/Nintendo Switch/Game/Bayonetta_2.png"
+		},
+		"505": {
+            		"id": 505,
+			"section": "Nintendo Switch",
+			"category": "Игры",
+			"name_of_product": "Wolfenstein 2: The New Colossus",
+			"price": 2400,
+			"state": "В наличии",
+			"count_of_product": 2,
+			"url": "img/photo-products/Nintendo Switch/Game/Wolfenstein_2.png"
+		},
+		"506": {
+            		"id": 506,
+			"section": "Nintendo Switch",
+			"category": "Игры",
+			"name_of_product": "Assassins Creed 3 (обновлённая версия)",
+			"price": 1600,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Game/Assassins Creed_3.png"
+		},
+		"507": {
+            		"id": 507,
+			"section": "Nintendo Switch",
+			"category": "Игры",
+			"name_of_product": "Rayman Legends: Definitive Edition",
+			"price": 2000,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Game/Rayman_Legends.png"
+		},
+		"508": {
+            		"id": 508,
+			"section": "Nintendo Switch",
+			"category": "Игры",
+			"name_of_product": "The Elder Scrolls V: Skyrim + 3 дополнения (Dawnguard, Hearthfire, Dragonborn)",
+			"price": 2800,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Game/Skyrim.png"
+		},
+		"509": {
+            		"id": 509,
+			"section": "Nintendo Switch",
+			"category": "Игры",
+			"name_of_product": "Super Smash Bros: Ultimate",
+			"price": 3200,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Game/Super_Smash_Bros.png"
+		},
+		"510": {
+            		"id": 510,
+			"section": "Nintendo Switch",
+			"category": "Игры",
+			"name_of_product": "Monster Hunter: Generations Ultimate",
+			"price": 2000,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Game/Monster_Hunter.png"
+		},
+		"511": {
+            		"id": 511,
+			"section": "Nintendo Switch",
+			"category": "Игры",
+			"name_of_product": "Payday 2",
+			"price": 1500,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Game/Payday_2.png"
+		},
+		"512": {
+            		"id": 512,
+			"section": "Nintendo Switch",
+			"category": "Игры",
+			"name_of_product": "Farming Simulator",
+			"price": 1400,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Game/Farming_Simulator.png"
+		},
+		"513": {
+            		"id": 513,
+			"section": "Nintendo Switch",
+			"category": "Игры",
+			"name_of_product": "Red Faction: Guerrilla Re-mars-tered",
+			"price": 2000,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Game/Red_Faction.png"
+		},
+		"514": {
+            		"id": 514,
+			"section": "Nintendo Switch",
+			"category": "Игры",
+			"name_of_product": "Darksiders: Warmastered Edition",
+			"price": 1800,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Game/Darksiders.jpg"
+		},
+		"515": {
+            		"id": 515,
+			"section": "Nintendo Switch",
+			"category": "Игры",
+			"name_of_product": "Super Mario Odyssey",
+			"price": 2500,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Game/Super_Mario_Odyssey.png"
+		},
+		"516": {
+            		"id": 516,
+			"section": "Nintendo Switch",
+			"category": "Игры",
+			"name_of_product": "Sid Meiers Civilization VI",
+			"price": 2300,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Game/Sid_Meiers_Civilization_VI.png"
+		}
+    	},
 	{
-		"id": 1105,
-		"section": "Playstation",
-		"category": "Приставки",
-		"name_of_product": "PS 5",
-		"price": 30000,
-		"state": "Ожидается поступление",
-		"count_of_product": 0,
-		"url": "img/photo-products/Playstation/Console/ps5.jpg"
-	},
+		"601": {
+            		"id": 601,
+			"section": "Nintendo Switch",
+			"category": "Аксессуары",
+			"name_of_product": "Pro Controller: Original",
+			"price": 3600,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Accessory/Pro_Controller_Original.png"
+		},
+		"602": {
+            		"id": 602,
+			"section": "Nintendo Switch",
+			"category": "Аксессуары",
+			"name_of_product": "Pro Controller: Splatoon Version",
+			"price": 3800,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Accessory/Pro_Controller_Splatoon_Version.png"
+		},
+		"603": {
+            		"id": 603,
+			"section": "Nintendo Switch",
+			"category": "Аксессуары",
+			"name_of_product": "Чехол Original",
+			"price": 500,
+			"state": "В наличии",
+			"count_of_product": 6,
+			"url": "img/photo-products/Nintendo Switch/Accessory/Чехол_Original.png"
+		},
+		"604": {
+            		"id": 604,
+			"section": "Nintendo Switch",
+			"category": "Аксессуары",
+			"name_of_product": "Portable Dock-charger Original",
+			"price": 900,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Accessory/Portable_Dock-charger_Original.png"
+		},
+		"605": {
+            		"id": 605,
+			"section": "Nintendo Switch",
+			"category": "Аксессуары",
+			"name_of_product": "Joy-Con Original",
+			"price": 3999,
+			"state": "В наличии",
+			"count_of_product": 1,
+			"url": "img/photo-products/Nintendo Switch/Accessory/Joy-Con_Original.png"
+		}
+    	},
 	{
-		"id": 1201,
-		"section": "Playstation",
-		"category": "Игры",
-		"name_of_product": "Тачки 3: Навстречу победе",
-		"price": 1400,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Playstation/Game/Тачки_3:_Навстречу_победе.jpg"
-	},
-	{
-		"id": 1202,
-		"section": "Playstation",
-		"category": "Игры",
-		"name_of_product": "Horizon Zero Dawn",
-		"price": 600,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Playstation/Game/Horizon_Zero_Dawn.jpg"
-	},
-	{
-		"id": 1203,
-		"section": "Playstation",
-		"category": "Игры",
-		"name_of_product": "The Last of Us",
-		"price": 800,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Playstation/Game/The_Last_of_Us.jpg"
-	},
-
-
-
-	{
-		"id": 2101,
-		"section": "Nintendo Switch",
-		"category": "Приставки",
-		"name_of_product": "Nintendo Switch V2 128GB",
-		"price": 32000,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Console/Nintendo_Switch_V2_128GB.jpg"
-	},
-	{
-		"id": 2102,
-		"section": "Nintendo Switch",
-		"category": "Приставки",
-		"name_of_product": "Nintendo Switch Lite 128GB",
-		"price": 24000,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Console/Nintendo_Switch_Lite_128GB.png"
-	},
-	{
-		"id": 2103,
-		"section": "Nintendo Switch",
-		"category": "Приставки",
-		"name_of_product": "Nintendo Switch V1 128GB",
-		"price": 26000,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Console/Nintendo_Switch_V1_128GB.png"
-	},
-	{
-		"id": 2104,
-		"section": "Nintendo Switch",
-		"category": "Приставки",
-		"name_of_product": "Nintendo Switch V2",
-		"price": 19500,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Console/Nintendo_Switch_V2.png"
-	},
-	{
-		"id": 2201,
-		"section": "Nintendo Switch",
-		"category": "Игры",
-		"name_of_product": "Street Fighter",
-		"price": 1900,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Game/Street_Fighter.png"
-	},
-	{
-		"id": 2202,
-		"section": "Nintendo Switch",
-		"category": "Игры",
-		"name_of_product": "Rime",
-		"price": 2100,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Game/Rime.png"
-	},
-	{
-		"id": 2203,
-		"section": "Nintendo Switch",
-		"category": "Игры",
-		"name_of_product": "Child of Light/Valiant Hearts",
-		"price": 1800,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Game/Child_of_Light_Valiant_Hearts.png"
-	},
-	{
-		"id": 2204,
-		"section": "Nintendo Switch",
-		"category": "Игры",
-		"name_of_product": "Bayonetta 2 + код на Bayonetta",
-		"price": 2500,
-		"state": "В наличии",
-		"count_of_product": 2,
-		"url": "img/photo-products/Nintendo Switch/Game/Bayonetta_2.png"
-	},
-	{
-		"id": 2205,
-		"section": "Nintendo Switch",
-		"category": "Игры",
-		"name_of_product": "Wolfenstein 2: The New Colossus",
-		"price": 2400,
-		"state": "В наличии",
-		"count_of_product": 2,
-		"url": "img/photo-products/Nintendo Switch/Game/Wolfenstein_2.png"
-	},
-	{
-		"id": 2206,
-		"section": "Nintendo Switch",
-		"category": "Игры",
-		"name_of_product": "Assassins Creed 3 (обновлённая версия)",
-		"price": 1600,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Game/Assassins Creed_3.png"
-	},
-	{
-		"id": 2207,
-		"section": "Nintendo Switch",
-		"category": "Игры",
-		"name_of_product": "Rayman Legends: Definitive Edition",
-		"price": 2000,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Game/Rayman_Legends.png"
-	},
-	{
-		"id": 2208,
-		"section": "Nintendo Switch",
-		"category": "Игры",
-		"name_of_product": "The Elder Scrolls V: Skyrim + 3 дополнения (Dawnguard, Hearthfire, Dragonborn)",
-		"price": 2800,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Game/Skyrim.png"
-	},
-	{
-		"id": 2209,
-		"section": "Nintendo Switch",
-		"category": "Игры",
-		"name_of_product": "Super Smash Bros: Ultimate",
-		"price": 3200,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Game/Super_Smash_Bros.png"
-	},
-	{
-		"id": 2210,
-		"section": "Nintendo Switch",
-		"category": "Игры",
-		"name_of_product": "Monster Hunter: Generations Ultimate",
-		"price": 2000,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Game/Monster_Hunter.png"
-	},
-	{
-		"id": 2211,
-		"section": "Nintendo Switch",
-		"category": "Игры",
-		"name_of_product": "Payday 2",
-		"price": 1500,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Game/Payday_2.png"
-	},
-	{
-		"id": 2212,
-		"section": "Nintendo Switch",
-		"category": "Игры",
-		"name_of_product": "Farming Simulator",
-		"price": 1400,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Game/Farming_Simulator.png"
-	},
-	{
-		"id": 2213,
-		"section": "Nintendo Switch",
-		"category": "Игры",
-		"name_of_product": "Red Faction: Guerrilla Re-mars-tered",
-		"price": 2000,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Game/Red_Faction.png"
-	},
-	{
-		"id": 2214,
-		"section": "Nintendo Switch",
-		"category": "Игры",
-		"name_of_product": "Darksiders: Warmastered Edition",
-		"price": 1800,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Game/Darksiders.jpg"
-	},
-	{
-		"id": 2215,
-		"section": "Nintendo Switch",
-		"category": "Игры",
-		"name_of_product": "Super Mario Odyssey",
-		"price": 2500,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Game/Super_Mario_Odyssey.png"
-	},
-	{
-		"id": 2216,
-		"section": "Nintendo Switch",
-		"category": "Игры",
-		"name_of_product": "Sid Meiers Civilization VI",
-		"price": 2300,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Game/Sid_Meiers_Civilization_VI.png"
-	},
-	{
-		"id": 2301,
-		"section": "Nintendo Switch",
-		"category": "Аксессуары",
-		"name_of_product": "Pro Controller: Original",
-		"price": 3600,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Accessory/Pro_Controller_Original.png"
-	},
-	{
-		"id": 2302,
-		"section": "Nintendo Switch",
-		"category": "Аксессуары",
-		"name_of_product": "Pro Controller: Splatoon Version",
-		"price": 3800,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Accessory/Pro_Controller_Splatoon_Version.png"
-	},
-	{
-		"id": 2303,
-		"section": "Nintendo Switch",
-		"category": "Аксессуары",
-		"name_of_product": "Чехол Original",
-		"price": 500,
-		"state": "В наличии",
-		"count_of_product": 6,
-		"url": "img/photo-products/Nintendo Switch/Accessory/Чехол_Original.png"
-	},
-	{
-		"id": 2304,
-		"section": "Nintendo Switch",
-		"category": "Аксессуары",
-		"name_of_product": "Portable Dock-charger Original",
-		"price": 900,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Accessory/Portable_Dock-charger_Original.png"
-	},
-	{
-		"id": 2305,
-		"section": "Nintendo Switch",
-		"category": "Аксессуары",
-		"name_of_product": "Joy-Con Original",
-		"price": 3999,
-		"state": "В наличии",
-		"count_of_product": 1,
-		"url": "img/photo-products/Nintendo Switch/Accessory/Joy-Con_Original.png"
-	},
-
-
-
-	{
-		"id": 3101,
-		"section": "Xbox",
-		"category": "Приставки",
-		"name_of_product": "Xbox One S",
-		"price": 16500,
-		"state": "Ожидается поступление",
-		"count_of_product": 0,
-		"url": "img/photo-products/Xbox/Console/Xbox_One_S.png"
-	}
+		"701": {
+            		"id": 701,
+			"section": "Xbox",
+			"category": "Приставки",
+			"name_of_product": "Xbox One S",
+			"price": 16500,
+			"state": "Ожидается поступление",
+			"count_of_product": 0,
+			"url": "img/photo-products/Xbox/Console/Xbox_One_S.png"
+		}
+    	},
+    	{},
+	{}
 ]
