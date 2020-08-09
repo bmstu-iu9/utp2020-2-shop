@@ -233,7 +233,7 @@ var json = function (response) {
 
 //Получение данных из файла
 document.addEventListener('DOMContentLoaded', function(){
-    fetch("./db.json")
+    fetch("./../res/db.json")
         .then(status)
         .then(json)
         .then(function (data_goods) {
