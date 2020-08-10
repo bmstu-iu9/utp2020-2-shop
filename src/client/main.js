@@ -61,6 +61,8 @@ function submitForm(e) {
         var del3 = document.getElementById('del-3');
         var del4 = document.getElementById('del-4');
         var del5 = document.getElementById('del-5');
+        var list_of_products = [];
+        var sum = total + " руб.";
 
         if (del1.checked) delivery = "Самовывоз (г. Москва)";
         else if (del2.checked) delivery = "Доставка СДЭК";
@@ -68,8 +70,13 @@ function submitForm(e) {
         else if (del4.checked) delivery = "Доставка Почтой России";
         else delivery = "Доставка курьером (г. Москва)";
 
+        for (let item of cart.values()) {
+            let i = item["object"]["name_of_product"];
+            list_of_products.push(i);
+        };
+
         //Save message
-        saveMessage(telephone, address, comment, delivery, contact_person, email);
+        saveMessage(telephone, address, comment, delivery, contact_person, email, list_of_products, sum);
     }
 }
 
@@ -79,7 +86,7 @@ function getInputVal(id) {
 }
 
 //Save message to Firebase
-function saveMessage(telephone, address, comment, delivery, contact_person, email) {
+function saveMessage(telephone, address, comment, delivery, contact_person, email, list_of_products, sum) {
     var newMessageRef = messagesRef.push();
     newMessageRef.set({
         telephone: telephone,
@@ -87,7 +94,9 @@ function saveMessage(telephone, address, comment, delivery, contact_person, emai
         comment: comment,
         delivery: delivery,
         contact_person: contact_person,
-        email: email
+        email: email,
+        list_of_products: list_of_products,
+        sum: sum
     });
 }
 
