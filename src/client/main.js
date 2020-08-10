@@ -14,7 +14,7 @@ selectElement.addEventListener("click", function(event) {
 })
 
 //Initialize Firebase
-var config = {
+let config = {
     apiKey: "AIzaSyC3IZYPlLM7MyK2eT4CWQm-lrgqiqTxmiQ",
     authDomain: "feedback-form-6fbbd.firebaseapp.com",
     databaseURL: "https://feedback-form-6fbbd.firebaseio.com",
@@ -28,10 +28,10 @@ var config = {
 firebase.initializeApp(config);
 
 //Reference messages collection
-var messagesRef = firebase.database().ref('messages');
+let messagesRef = firebase.database().ref('messages');
 
 //Listen for form submit
-var feedback_form_el = document.getElementById('feedback_form');
+let feedback_form_el = document.getElementById('feedback_form');
 
 if (feedback_form_el) {
     feedback_form_el.addEventListener('submit', submitForm);
@@ -41,7 +41,7 @@ let cart = new Map();
 
 //Submit form
 function submitForm(e) {
-    if (cart.size == 0) {
+    if (cart.size === 0) {
         alert("Ваша корзина пуста. Перед отправкой заказа добавьте в корзину хотя бы один товар.");
         e.preventDefault();
     } else {
@@ -50,26 +50,37 @@ function submitForm(e) {
         e.preventDefault();
 
         //Get values
-        var telephone = getInputVal('telephone');
-        var address = getInputVal('address');
-        var comment = getInputVal('comment');
-        var contact_person = getInputVal('contact_person');
-        var email = getInputVal('email');
-        var delivery;
-        var del1 = document.getElementById('del-1');
-        var del2 = document.getElementById('del-2');
-        var del3 = document.getElementById('del-3');
-        var del4 = document.getElementById('del-4');
-        var del5 = document.getElementById('del-5');
-
-        if (del1.checked) delivery = "Самовывоз (г. Москва)";
-        else if (del2.checked) delivery = "Доставка СДЭК";
-        else if (del3.checked) delivery = "Доставка ЕМС";
-        else if (del4.checked) delivery = "Доставка Почтой России";
-        else delivery = "Доставка курьером (г. Москва)";
+        let data_submit_form = [];
+        let data = ['telephone', 'address', 'comment', 'contact_person', 'email'];
+        let list_of_del = ['del-1', 'del-2', 'del-3', 'del-4', 'del-5'];
+        let type_of_delivery = ["Самовывоз (г. Москва)", "Доставка СДЭК", "Доставка ЕМС",
+            "Доставка Почтой России", "Доставка курьером (г. Москва)"];
+        let del = [];
+        let delivery;
+        let list_of_products = [];
+        for (let i = 0; i < data.length; i++) {
+            data_submit_form.push(getInputVal(data[i]));
+        }
+        for (let i = 0; i < list_of_del.length; i++) {
+            del.push(document.getElementById(list_of_del[i]));
+        }
+        for (let i = 0; i < type_of_delivery.length; i++) {
+            if (del[i].checked) {
+                delivery = type_of_delivery[i];
+                break;
+            }
+        }
+        data_submit_form.push(delivery);
+        for (let item of cart.values()) {
+            let i = item["object"]["name_of_product"];
+            list_of_products.push(i);
+        }
+        data_submit_form.push(list_of_products);
+        let sum = total + " ₽";
+        data_submit_form.push(sum);
 
         //Save message
-        saveMessage(telephone, address, comment, delivery, contact_person, email);
+        saveMessage(data_submit_form);
     }
 }
 
@@ -79,15 +90,17 @@ function getInputVal(id) {
 }
 
 //Save message to Firebase
-function saveMessage(telephone, address, comment, delivery, contact_person, email) {
-    var newMessageRef = messagesRef.push();
+function saveMessage(data_submit_form) {
+    let newMessageRef = messagesRef.push();
     newMessageRef.set({
-        telephone: telephone,
-        address: address,
-        comment: comment,
-        delivery: delivery,
-        contact_person: contact_person,
-        email: email
+        telephone: data_submit_form[0],
+        address: data_submit_form[1],
+        comment: data_submit_form[2],
+        contact_person: data_submit_form[3],
+        email: data_submit_form[4],
+        delivery: data_submit_form[5],
+        list_of_products: data_submit_form[6],
+        sum: data_submit_form[7]
     });
 }
 
@@ -105,7 +118,7 @@ function isEmptyObject(obj) {
 function setAttributes(elem, obj) {
     for (var prop in obj) {
         if (obj.hasOwnProperty(prop))
-        elem[prop] = obj[prop];
+            elem[prop] = obj[prop];
     }
 }
 
@@ -134,7 +147,7 @@ function createItem(item){
     itemImg.setAttribute("class","productImg");
     let img = document.createElement("img");
 
-     setAttributes(img, {
+    setAttributes(img, {
         src: item["url"],
         alt: "product photo",
         height: "220",
@@ -144,7 +157,7 @@ function createItem(item){
 
     let itemName = document.createElement("div");
     itemName.setAttribute("class","productName");
-     itemName.innerHTML = item["name_of_product"];
+    itemName.innerHTML = item["name_of_product"];
 
     let itemAvailability = document.createElement("div");
     itemAvailability.setAttribute("class","productAvailability");
@@ -159,7 +172,7 @@ function createItem(item){
     else
         urlIcon = "img/icons/exclamation-icon.png";
 
-     setAttributes(imgIcon, {
+    setAttributes(imgIcon, {
         src: urlIcon,
         alt: "availabilityIcon",
         height: "15",
@@ -197,13 +210,13 @@ function createItem(item){
 
 //Создание блока товаров
 function getListContent(data) {
-  let newDiv = document.createElement("div");
-  newDiv.setAttribute("class","product-catagory");
-  for (var key in data) {
-      newDiv.append(createItem(data[key]));
-  }
+    let newDiv = document.createElement("div");
+    newDiv.setAttribute("class","product-catagory");
+    for (var key in data) {
+        newDiv.append(createItem(data[key]));
+    }
 
-  return newDiv;
+    return newDiv;
 
 }
 
