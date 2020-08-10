@@ -37,31 +37,40 @@ if (feedback_form_el) {
     feedback_form_el.addEventListener('submit', submitForm);
 }
 
+let cart = new Map();
+
 //Submit form
 function submitForm(e) {
-    e.preventDefault();
+    if (cart.size == 0) {
+        alert("Ваша корзина пуста. Перед отправкой заказа добавьте в корзину хотя бы один товар.");
+        e.preventDefault();
+    } else {
+        alert("Ваша заявка отправлена.");
 
-    //Get values
-    var telephone = getInputVal('telephone');
-    var address = getInputVal('address');
-    var comment = getInputVal('comment');
-    var contact_person = getInputVal('contact_person');
-    var email = getInputVal('email');
-    var delivery;
-    var del1 = document.getElementById('del-1');
-    var del2 = document.getElementById('del-2');
-    var del3 = document.getElementById('del-3');
-    var del4 = document.getElementById('del-4');
-    var del5 = document.getElementById('del-5');
+        e.preventDefault();
 
-    if (del1.checked) delivery = "Самовывоз (г. Москва)";
-    else if (del2.checked) delivery = "Доставка СДЭК";
-    else if (del3.checked) delivery = "Доставка ЕМС";
-    else if (del4.checked) delivery = "Доставка Почтой России";
-    else delivery = "Доставка курьером (г. Москва)";
+        //Get values
+        var telephone = getInputVal('telephone');
+        var address = getInputVal('address');
+        var comment = getInputVal('comment');
+        var contact_person = getInputVal('contact_person');
+        var email = getInputVal('email');
+        var delivery;
+        var del1 = document.getElementById('del-1');
+        var del2 = document.getElementById('del-2');
+        var del3 = document.getElementById('del-3');
+        var del4 = document.getElementById('del-4');
+        var del5 = document.getElementById('del-5');
 
-    //Save message
-    saveMessage(telephone, address, comment, delivery, contact_person, email);
+        if (del1.checked) delivery = "Самовывоз (г. Москва)";
+        else if (del2.checked) delivery = "Доставка СДЭК";
+        else if (del3.checked) delivery = "Доставка ЕМС";
+        else if (del4.checked) delivery = "Доставка Почтой России";
+        else delivery = "Доставка курьером (г. Москва)";
+
+        //Save message
+        saveMessage(telephone, address, comment, delivery, contact_person, email);
+    }
 }
 
 //Function to get form values
@@ -99,8 +108,6 @@ function setAttributes(elem, obj) {
         elem[prop] = obj[prop];
     }
 }
-
-let cart = new Map();
 
 // //Добавление товара
 function addOnePurchase (item) {
@@ -229,7 +236,7 @@ const countTotal = () => {
 }
 
 //отрисовка корзины
-const renderCart = () => {    
+const renderCart = () => {
     var out = '<table> <tr> <th>Наименование</th> <th>Цена, руб</th>';
     out+='<th>Кол-во, шт</th> <th>Стоимость, руб</th> <th> </th> </tr>';
     for (let item of cart) {
