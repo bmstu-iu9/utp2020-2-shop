@@ -93,8 +93,8 @@ function saveMessage(telephone, address, comment, delivery, contact_person, emai
 
 //Проверка объекта на пустоту
 function isEmptyObject(obj) {
-    for (var i in obj) {
-        if (obj.hasOwnProperty(i)) {
+    for (var prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
             return false;
         }
     }
@@ -109,13 +109,38 @@ function setAttributes(elem, obj) {
     }
 }
 
+//Создание изображения
+function createImageWithAttributes (attributesList){
+    let keys = ['src', 'alt', 'height', 'width'];
+    let obj = {};
+
+    for (let i = 0; i < keys.length; i++) {
+        obj[keys[i]] = attributesList[i];
+    }
+
+    let img = document.createElement("img");
+    setAttributes(img,obj);
+
+    return img;
+}
+
+//Cоздание внутреннего элемента
+function createElementWithAttributes (attributesList){
+    let element = document.createElement(attributesList[0]);
+    element.setAttribute("class", attributesList[1]);
+    if (attributesList.length === 3)
+        element.innerHTML = attributesList[2];
+
+    return element;
+}
+
 // //Добавление товара
-function addOnePurchase (item) {
-    let id = item["id"];
+function addOnePurchase (goodInformation) {
+    let id = goodInformation["id"];
     let res = cart.get(id);
     if (res === undefined) {
-        if (item["count_of_product"] > 0) {
-            cart.set(id, {"count": 0,"object": item});
+        if (goodInformation["count_of_product"] > 0) {
+            cart.set(id, {"count": 0,"object": goodInformation});
             plusFunction(id);
         }
         else alert ("Товара нет в наличии.");
@@ -125,103 +150,90 @@ function addOnePurchase (item) {
 }
 
 //Сооздание единицы товара
-function createItem(item){
-    let newDiv = document.createElement("div");
-    newDiv.setAttribute("class","product");
+function createItem(goodInformation){
+
+    let goodAtr = ["div", "product"]
+    let good = createElementWithAttributes(goodAtr);
+
+    //Основные внутренние элементы товара
+    let innerElementsInformation = [
+        ["div", "productImg"],
+        ["div", "productName", goodInformation["name_of_product"]],
+        ["div", "productState"],
+        ["div", "productCost", goodInformation["price"] + " руб"],
+        ["button", "addPurchase", "Добавить в корзину"],
+    ]
+    //Создание основных внутренних элементов товара
+    let goodInnerElements = [];
+
+    for (let i = 0; i < innerElementsInformation.length; ++i){
+        let elAtr = innerElementsInformation[i];
+        let el = createElementWithAttributes(elAtr);
+        goodInnerElements.push(el);
+    }
+
+    //Создание фоторафии товара
+    let photoAttrib = [goodInformation["url"], "product photo", "220",  "220"];
+    let goodPhoto = createImageWithAttributes (photoAttrib);
+    goodInnerElements[0].append(goodPhoto);
+
+    //Создание иконки статуса
+    let iconAttrib = ["div", "availabilityIcon"]
+    let goodIcon = createElementWithAttributes(iconAttrib);
+
+        let iconUrl;
+        if (goodInformation["state"] == "В наличии")
+        iconUrl = "img/icons/confirmation-icon.png";
+        else
+        iconUrl = "img/icons/exclamation-icon.png";
+
+        let iconImgAttrib = [iconUrl, "availabilityIcon", "15",  "15"];
+        let iconImg = createImageWithAttributes (iconImgAttrib);
+        goodIcon.append(iconImg);
+        goodInnerElements[2].append(goodIcon);
+
+    //Создание текста статуса
+    let stateAtr = ["div", "productStateText", "state"];
+    let goodState = createElementWithAttributes(stateAtr);
+    goodInnerElements[2].append(goodState);
 
 
-    let itemImg = document.createElement("div");
-    itemImg.setAttribute("class","productImg");
-    let img = document.createElement("img");
-
-     setAttributes(img, {
-        src: item["url"],
-        alt: "product photo",
-        height: "220",
-        width: "220"
-    });
+    let func = "addOnePurchase("+JSON.stringify(goodInformation)+")";
+    goodInnerElements[4].setAttribute("onclick", func);
 
 
-    let itemName = document.createElement("div");
-    itemName.setAttribute("class","productName");
-     itemName.innerHTML = item["name_of_product"];
+    good.append(...goodInnerElements);
 
-    let itemAvailability = document.createElement("div");
-    itemAvailability.setAttribute("class","productAvailability");
-
-    let itemIcon = document.createElement("div");
-    itemIcon.setAttribute("class","availabilityIcon");
-    let imgIcon = document.createElement("img");
-
-    let urlIcon;
-    if (item["state"] == "В наличии")
-        urlIcon = "img/icons/confirmation-icon.png";
-    else
-        urlIcon = "img/icons/exclamation-icon.png";
-
-     setAttributes(imgIcon, {
-        src: urlIcon,
-        alt: "availabilityIcon",
-        height: "15",
-        width: "15"
-    });
-
-    let itemState = document.createElement("div");
-    itemState.setAttribute("class","productState");
-    itemState.innerHTML = item["state"];
-
-
-    let itemCost = document.createElement("div");
-    itemCost.setAttribute("class","productCost");
-    itemCost.innerHTML = item["price"] + " руб";
-
-    let func = "addOnePurchase("+JSON.stringify(item)+")";
-
-    let addPurchase = document.createElement("button");
-    addPurchase.setAttribute("class","addPurchase");
-    addPurchase.setAttribute("onclick", func);
-    addPurchase.innerHTML = "Добавить в корзину";
-
-    itemImg.append(img);
-    newDiv.append(itemImg);
-    newDiv.append(itemName);
-    itemIcon.append(imgIcon);
-    itemAvailability.append(itemIcon);
-    itemAvailability.append(itemState);
-    newDiv.append(itemAvailability);
-    newDiv.append(itemCost);
-    newDiv.append(addPurchase);
-
-    return newDiv;
+    return good;
 }
 
 //Создание блока товаров
-function getListContent(data) {
-  let newDiv = document.createElement("div");
-  newDiv.setAttribute("class","product-catagory");
-  for (var key in data) {
-      newDiv.append(createItem(data[key]));
+function getListContent(dataCategory) {
+  let goodsList = document.createElement("div");
+  goodsList.setAttribute("class","product-category");
+  for (var key in dataCategory) {
+      goodsList.append(createItem(dataCategory[key]));
   }
-
-  return newDiv;
+  return goodsList;
 
 }
 
 //Вывод всех товаров
-function showGoods(data){
-    let category = ["Приставки", "Игры", "Аксессуары"];
+function showGoods(dataGoods){
+    let categoryNames = ["Приставки", "Игры", "Аксессуары"];
 
     for (let i = 0; i < 3; ++i){
         let id = 'tab-'+(i+1);
 
         for (let k = 0; k < 3; ++k){
-            if (isEmptyObject(data[i*3+k]) == false ){
-                let newDiv = document.createElement("div");
-                newDiv.setAttribute("class","category-name");
-                newDiv.innerHTML = category[k];
+            let ind = i*3 + k;
+            if (isEmptyObject(dataGoods[ind]) == false ){
+                let goodsCategoryName = document.createElement("div");
+                goodsCategoryName.setAttribute("class","category-name");
+                goodsCategoryName.innerHTML = categoryNames[k];
 
-                document.getElementById(id).append(newDiv);
-                document.getElementById(id).append(getListContent(data[i*3+k]));
+                document.getElementById(id).append(goodsCategoryName);
+                document.getElementById(id).append(getListContent(dataGoods[ind]));
             }
         }
     }
@@ -229,15 +241,9 @@ function showGoods(data){
 
 let total = 0;
 
-const countTotal = () => {
-    for (let key of cart.keys()) {
-        total += cart.get(key)['count'] * cart.get(key)['object']['price'];
-    }
-}
-
 //отрисовка корзины
 const renderCart = () => {
-    var out = '<table> <tr> <th>Наименование</th> <th>Цена, руб</th>';
+    let out = '<table> <tr> <th>Наименование</th> <th>Цена, руб</th>';
     out+='<th>Кол-во, шт</th> <th>Стоимость, руб</th> <th> </th> </tr>';
     for (let item of cart) {
         out+='<tr>'
@@ -321,13 +327,13 @@ const cleanCart = () => {
     emptyCart();
 }
 
-var status = function (response) {
+let status = function (response) {
     if (response.status !== 200) {
         return Promise.reject(new Error(response.statusText))
     }
     return Promise.resolve(response)
 }
-var json = function (response) {
+let json = function (response) {
     return response.json()
 }
 
@@ -336,9 +342,9 @@ document.addEventListener('DOMContentLoaded', function(){
     fetch("./../res/db.json")
         .then(status)
         .then(json)
-        .then(function (data_goods) {
-            console.log('data', data_goods);
-            showGoods(data_goods);
+        .then(function (dataGoods) {
+            console.log('data', dataGoods);
+            showGoods(dataGoods);
         })
         .catch(function (error) {
             console.log('error', error)

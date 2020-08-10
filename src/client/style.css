@@ -311,7 +311,7 @@ main {
     margin-left: 30px;
 }
 
-.product-catagory {
+.product-category {
     overflow: hidden;
 }
 
@@ -338,7 +338,7 @@ main {
     display: inline-block;
 }
 
-.productState {
+.productStateText {
     display: inline-block;
     margin-left: 10px;
     font-size: 15px;
