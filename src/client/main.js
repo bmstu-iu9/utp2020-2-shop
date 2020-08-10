@@ -14,7 +14,7 @@ selectElement.addEventListener("click", function(event) {
 })
 
 //Initialize Firebase
-var config = {
+const config = {
     apiKey: "AIzaSyC3IZYPlLM7MyK2eT4CWQm-lrgqiqTxmiQ",
     authDomain: "feedback-form-6fbbd.firebaseapp.com",
     databaseURL: "https://feedback-form-6fbbd.firebaseio.com",
@@ -28,10 +28,10 @@ var config = {
 firebase.initializeApp(config);
 
 //Reference messages collection
-var messagesRef = firebase.database().ref('messages');
+const messagesRef = firebase.database().ref('messages');
 
 //Listen for form submit
-var feedback_form_el = document.getElementById('feedback_form');
+const feedback_form_el = document.getElementById('feedback_form');
 
 if (feedback_form_el) {
     feedback_form_el.addEventListener('submit', submitForm);
@@ -50,17 +50,19 @@ function submitForm(e) {
         e.preventDefault();
 
         //Get values
-        var telephone = getInputVal('telephone');
-        var address = getInputVal('address');
-        var comment = getInputVal('comment');
-        var contact_person = getInputVal('contact_person');
-        var email = getInputVal('email');
-        var delivery;
-        var del1 = document.getElementById('del-1');
-        var del2 = document.getElementById('del-2');
-        var del3 = document.getElementById('del-3');
-        var del4 = document.getElementById('del-4');
-        var del5 = document.getElementById('del-5');
+        let telephone = getInputVal('telephone');
+        let address = getInputVal('address');
+        let comment = getInputVal('comment');
+        let contact_person = getInputVal('contact_person');
+        let email = getInputVal('email');
+        let delivery;
+        let del1 = document.getElementById('del-1');
+        let del2 = document.getElementById('del-2');
+        let del3 = document.getElementById('del-3');
+        let del4 = document.getElementById('del-4');
+        let del5 = document.getElementById('del-5');
+        let list_of_products = [];
+        let sum = total + " ₽";
 
         if (del1.checked) delivery = "Самовывоз (г. Москва)";
         else if (del2.checked) delivery = "Доставка СДЭК";
@@ -68,8 +70,13 @@ function submitForm(e) {
         else if (del4.checked) delivery = "Доставка Почтой России";
         else delivery = "Доставка курьером (г. Москва)";
 
+        for (let item of cart.values()) {
+            let i = item["object"]["name_of_product"];
+            list_of_products.push(i);
+        };
+
         //Save message
-        saveMessage(telephone, address, comment, delivery, contact_person, email);
+        saveMessage(telephone, address, comment, delivery, contact_person, email, list_of_products, sum);
     }
 }
 
@@ -79,7 +86,7 @@ function getInputVal(id) {
 }
 
 //Save message to Firebase
-function saveMessage(telephone, address, comment, delivery, contact_person, email) {
+function saveMessage(telephone, address, comment, delivery, contact_person, email, list_of_products, sum) {
     var newMessageRef = messagesRef.push();
     newMessageRef.set({
         telephone: telephone,
@@ -87,13 +94,15 @@ function saveMessage(telephone, address, comment, delivery, contact_person, emai
         comment: comment,
         delivery: delivery,
         contact_person: contact_person,
-        email: email
+        email: email,
+        list_of_products: list_of_products,
+        sum: sum
     });
 }
 
 //Проверка объекта на пустоту
 function isEmptyObject(obj) {
-    for (var i in obj) {
+    for (let i in obj) {
         if (obj.hasOwnProperty(i)) {
             return false;
         }
@@ -103,7 +112,7 @@ function isEmptyObject(obj) {
 
 //Запись атрибутов
 function setAttributes(elem, obj) {
-    for (var prop in obj) {
+    for (let prop in obj) {
         if (obj.hasOwnProperty(prop))
         elem[prop] = obj[prop];
     }
@@ -321,13 +330,13 @@ const cleanCart = () => {
     emptyCart();
 }
 
-var status = function (response) {
+const status = function (response) {
     if (response.status !== 200) {
         return Promise.reject(new Error(response.statusText))
     }
     return Promise.resolve(response)
 }
-var json = function (response) {
+const json = function (response) {
     return response.json()
 }
 
