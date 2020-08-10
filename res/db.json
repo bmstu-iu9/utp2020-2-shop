@@ -60,7 +60,7 @@
 			"price": 1400,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Playstation/Game/Тачки_3:_Навстречу_победе.jpg"
+			"url": "img/photo-products/Playstation/Game/cars3.jpg"
 		},
 		"202": {
             		"id": 202,
@@ -93,7 +93,7 @@
 			"price": 32000,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Console/Nintendo_Switch_V2_128GB.jpg"
+			"url": "/img/photo-products/Nintendo-Switch/Console/img11.jpg"
 		},
 		"402": {
             		"id": 402,
@@ -103,7 +103,7 @@
 			"price": 24000,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Console/Nintendo_Switch_Lite_128GB.png"
+			"url": "img/photo-products/Nintendo-Switch/Console/img12.png"
 		},
 		"403": {
            		"id": 403,
@@ -113,7 +113,7 @@
 			"price": 26000,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Console/Nintendo_Switch_V1_128GB.png"
+			"url": "img/photo-products/Nintendo-Switch/Console/img13.png"
 		},
 		"404": {
            		"id": 404,
@@ -123,7 +123,7 @@
 			"price": 19500,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Console/Nintendo_Switch_V2.png"
+			"url": "img/photo-products/Nintendo-Switch/Console/img14.png"
 		}
    	},
 	{
@@ -135,7 +135,7 @@
 			"price": 1900,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Game/Street_Fighter.png"
+			"url": "img/photo-products/Nintendo-Switch/Game/StreetFighter.png"
 		},
 		"502": {
             		"id": 502,
@@ -145,7 +145,7 @@
 			"price": 2100,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Game/Rime.png"
+			"url": "img/photo-products/Nintendo-Switch/Game/Rime.png"
 		},
 		"503": {
             		"id": 503,
@@ -155,7 +155,7 @@
 			"price": 1800,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Game/Child_of_Light_Valiant_Hearts.png"
+			"url": "img/photo-products/Nintendo-Switch/Game/ChildofLightValiantHearts.png"
 		},
 		"504": {
             		"id": 504,
@@ -165,7 +165,7 @@
 			"price": 2500,
 			"state": "В наличии",
 			"count_of_product": 2,
-			"url": "img/photo-products/Nintendo Switch/Game/Bayonetta_2.png"
+			"url": "img/photo-products/Nintendo-Switch/Game/Bayonetta2.png"
 		},
 		"505": {
             		"id": 505,
@@ -175,7 +175,7 @@
 			"price": 2400,
 			"state": "В наличии",
 			"count_of_product": 2,
-			"url": "img/photo-products/Nintendo Switch/Game/Wolfenstein_2.png"
+			"url": "img/photo-products/Nintendo-Switch/Game/Wolfenstein2.png"
 		},
 		"506": {
             		"id": 506,
@@ -185,7 +185,7 @@
 			"price": 1600,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Game/Assassins Creed_3.png"
+			"url": "img/photo-products/Nintendo-Switch/Game/AssassinsCreed3.png"
 		},
 		"507": {
             		"id": 507,
@@ -195,7 +195,7 @@
 			"price": 2000,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Game/Rayman_Legends.png"
+			"url": "img/photo-products/Nintendo-Switch/Game/RaymanLegends.png"
 		},
 		"508": {
             		"id": 508,
@@ -205,7 +205,7 @@
 			"price": 2800,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Game/Skyrim.png"
+			"url": "img/photo-products/Nintendo-Switch/Game/Skyrim.png"
 		},
 		"509": {
             		"id": 509,
@@ -215,7 +215,7 @@
 			"price": 3200,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Game/Super_Smash_Bros.png"
+			"url": "img/photo-products/Nintendo-Switch/Game/SuperSmashBros.png"
 		},
 		"510": {
             		"id": 510,
@@ -225,7 +225,7 @@
 			"price": 2000,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Game/Monster_Hunter.png"
+			"url": "img/photo-products/Nintendo-Switch/Game/MonsterHunter.png"
 		},
 		"511": {
             		"id": 511,
@@ -235,7 +235,7 @@
 			"price": 1500,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Game/Payday_2.png"
+			"url": "img/photo-products/Nintendo-Switch/Game/Payday2.png"
 		},
 		"512": {
             		"id": 512,
@@ -245,7 +245,7 @@
 			"price": 1400,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Game/Farming_Simulator.png"
+			"url": "img/photo-products/Nintendo-Switch/Game/FarmingSimulator.png"
 		},
 		"513": {
             		"id": 513,
@@ -255,7 +255,7 @@
 			"price": 2000,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Game/Red_Faction.png"
+			"url": "img/photo-products/Nintendo-Switch/Game/RedFaction.png"
 		},
 		"514": {
             		"id": 514,
@@ -265,7 +265,7 @@
 			"price": 1800,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Game/Darksiders.jpg"
+			"url": "img/photo-products/Nintendo-Switch/Game/Darksiders.jpg"
 		},
 		"515": {
             		"id": 515,
@@ -275,7 +275,7 @@
 			"price": 2500,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Game/Super_Mario_Odyssey.png"
+			"url": "img/photo-products/Nintendo-Switch/Game/SuperMarioOdyssey.png"
 		},
 		"516": {
             		"id": 516,
@@ -285,7 +285,7 @@
 			"price": 2300,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Game/Sid_Meiers_Civilization_VI.png"
+			"url": "img/photo-products/Nintendo-Switch/Game/SidMeiersCivilizationVI.png"
 		}
     	},
 	{
@@ -297,7 +297,7 @@
 			"price": 3600,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Accessory/Pro_Controller_Original.png"
+			"url": "img/photo-products/Nintendo-Switch/Accessory/ProControllerOriginal.png"
 		},
 		"602": {
             		"id": 602,
@@ -307,7 +307,7 @@
 			"price": 3800,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Accessory/Pro_Controller_Splatoon_Version.png"
+			"url": "img/photo-products/Nintendo-Switch/Accessory/ProControllerSplatoonVersion.png"
 		},
 		"603": {
             		"id": 603,
@@ -317,7 +317,7 @@
 			"price": 500,
 			"state": "В наличии",
 			"count_of_product": 6,
-			"url": "img/photo-products/Nintendo Switch/Accessory/Чехол_Original.png"
+			"url": "img/photo-products/Nintendo-Switch/Accessory/CaseOriginal.png"
 		},
 		"604": {
             		"id": 604,
@@ -327,7 +327,7 @@
 			"price": 900,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Accessory/Portable_Dock-charger_Original.png"
+			"url": "img/photo-products/Nintendo-Switch/Accessory/PortableDock-chargerOriginal.png"
 		},
 		"605": {
             		"id": 605,
@@ -337,7 +337,7 @@
 			"price": 3999,
 			"state": "В наличии",
 			"count_of_product": 1,
-			"url": "img/photo-products/Nintendo Switch/Accessory/Joy-Con_Original.png"
+			"url": "img/photo-products/Nintendo-Switch/Accessory/Joy-ConOriginal.png"
 		}
     	},
 	{
@@ -349,7 +349,7 @@
 			"price": 16500,
 			"state": "Ожидается поступление",
 			"count_of_product": 0,
-			"url": "img/photo-products/Xbox/Console/Xbox_One_S.png"
+			"url": "img/photo-products/Xbox/Console/XboxOneS.png"
 		}
     	},
     	{},
