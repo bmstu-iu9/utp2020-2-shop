@@ -114,7 +114,7 @@ header {
     width: 16px;
     height: 16px;
     background-color: #2F2F30;
-    background-image: url(https://raw.githubusercontent.com/bmstu-iu9/utp2020-2-shop/master/img/icons/arrow-icon.png);
+    background-image: url(img/icons/arrow-icon.png);
 }
 
 .header_select_dropdown {
@@ -542,21 +542,21 @@ th {
 }
 
 .plus {
-    background-image: url(https://github.com/bmstu-iu9/utp2020-2-shop/raw/master/img/icons/button_plus-icon.png);
+    background-image: url(img/icons/button_plus-icon.png);
     height: 20px;
     width: 20px;
     margin-left: 15px;
 }
 
 .minus {
-    background-image: url(https://github.com/bmstu-iu9/utp2020-2-shop/raw/master/img/icons/button_minus-icon.png);
+    background-image: url(img/icons/button_minus-icon.png);
     height: 20px;
     width: 20px;
     margin-right: 15px;
 }
 
 .delete {
-    background-image: url(https://github.com/bmstu-iu9/utp2020-2-shop/raw/master/img/icons/delete_all-icon.png);
+    background-image: url(img/icons/delete_all-icon.png);
     height: 40px;
     width: 30px;
 }
@@ -647,7 +647,7 @@ th {
 
 
 .info_about_company {
-    background-image: url(https://raw.githubusercontent.com/bmstu-iu9/utp2020-2-shop/master/img/background-info.jpg);
+    background-image: url(img/background-info.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
