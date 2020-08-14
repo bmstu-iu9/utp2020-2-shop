@@ -1,5 +1,5 @@
 "use strict"
-//Выпадающий список для поиска в шапке
+
 const selectElement = document.querySelector("[data_select]");
 
 selectElement.addEventListener("click", function(event) {
@@ -13,7 +13,6 @@ selectElement.addEventListener("click", function(event) {
     }
 })
 
-//Initialize Firebase
 var config = {
     apiKey: "AIzaSyC3IZYPlLM7MyK2eT4CWQm-lrgqiqTxmiQ",
     authDomain: "feedback-form-6fbbd.firebaseapp.com",
@@ -27,10 +26,8 @@ var config = {
 
 firebase.initializeApp(config);
 
-//Reference messages collection
 var messagesRef = firebase.database().ref('messages');
 
-//Listen for form submit
 var feedback_form_el = document.getElementById('feedback_form');
 
 if (feedback_form_el) {
@@ -39,7 +36,6 @@ if (feedback_form_el) {
 
 let cart = new Map();
 
-//Submit form
 function submitForm(e) {
     if (cart.size == 0) {
         alert("Ваша корзина пуста. Перед отправкой заказа добавьте в корзину хотя бы один товар.");
@@ -49,7 +45,6 @@ function submitForm(e) {
 
         e.preventDefault();
 
-        //Get values
         var telephone = getInputVal('telephone');
         var address = getInputVal('address');
         var comment = getInputVal('comment');
@@ -68,17 +63,14 @@ function submitForm(e) {
         else if (del4.checked) delivery = "Доставка Почтой России";
         else delivery = "Доставка курьером (г. Москва)";
 
-        //Save message
         saveMessage(telephone, address, comment, delivery, contact_person, email);
     }
 }
 
-//Function to get form values
 function getInputVal(id) {
     return document.getElementById(id).value;
 }
 
-//Save message to Firebase
 function saveMessage(telephone, address, comment, delivery, contact_person, email) {
     var newMessageRef = messagesRef.push();
     newMessageRef.set({
@@ -91,7 +83,6 @@ function saveMessage(telephone, address, comment, delivery, contact_person, emai
     });
 }
 
-//Проверка объекта на пустоту
 function isEmptyObject(obj) {
     for (var prop in obj) {
         if (obj.hasOwnProperty(prop)) {
@@ -101,7 +92,6 @@ function isEmptyObject(obj) {
     return true;
 }
 
-//Запись атрибутов
 function setAttributes(elem, obj) {
     for (var prop in obj) {
         if (obj.hasOwnProperty(prop))
@@ -109,7 +99,6 @@ function setAttributes(elem, obj) {
     }
 }
 
-//Создание изображения
 function createImageWithAttributes (attributesList){
     let keys = ['src', 'alt', 'height', 'width'];
     let obj = {};
@@ -124,7 +113,6 @@ function createImageWithAttributes (attributesList){
     return img;
 }
 
-//Cоздание внутреннего элемента
 function createElementWithAttributes (attributesList){
     let element = document.createElement(attributesList[0]);
     element.setAttribute("class", attributesList[1]);
@@ -134,7 +122,6 @@ function createElementWithAttributes (attributesList){
     return element;
 }
 
-// //Добавление товара
 function addOnePurchase (goodInformation) {
     let id = goodInformation["id"];
     let res = cart.get(id);
@@ -149,13 +136,11 @@ function addOnePurchase (goodInformation) {
     }
 }
 
-//Сооздание единицы товара
 function createItem(goodInformation){
 
-    let goodAtr = ["div", "product"]
-    let good = createElementWithAttributes(goodAtr);
+    let goodAttribute = ["div", "product"]
+    let good = createElementWithAttributes(goodAttribute);
 
-    //Основные внутренние элементы товара
     let innerElementsInformation = [
         ["div", "productImg"],
         ["div", "productName", goodInformation["name_of_product"]],
@@ -163,23 +148,21 @@ function createItem(goodInformation){
         ["div", "productCost", goodInformation["price"] + " руб"],
         ["button", "addPurchase", "Добавить в корзину"],
     ]
-    //Создание основных внутренних элементов товара
+
     let goodInnerElements = [];
 
     for (let i = 0; i < innerElementsInformation.length; ++i){
-        let elAtr = innerElementsInformation[i];
-        let el = createElementWithAttributes(elAtr);
-        goodInnerElements.push(el);
+        let elementAttribute = innerElementsInformation[i];
+        let element = createElementWithAttributes(elementAttribute);
+        goodInnerElements.push(element);
     }
 
-    //Создание фоторафии товара
-    let photoAttrib = [goodInformation["url"], "product photo", "220",  "220"];
-    let goodPhoto = createImageWithAttributes (photoAttrib);
+    let photoAttribute = [goodInformation["url"], "product photo", "220",  "220"];
+    let goodPhoto = createImageWithAttributes (photoAttribute);
     goodInnerElements[0].append(goodPhoto);
 
-    //Создание иконки статуса
-    let iconAttrib = ["div", "availabilityIcon"]
-    let goodIcon = createElementWithAttributes(iconAttrib);
+    let iconAttribute = ["div", "availabilityIcon"]
+    let goodIcon = createElementWithAttributes(iconAttribute);
 
         let iconUrl;
         if (goodInformation["state"] == "В наличии")
@@ -187,19 +170,18 @@ function createItem(goodInformation){
         else
         iconUrl = "img/icons/exclamation-icon.png";
 
-        let iconImgAttrib = [iconUrl, "availabilityIcon", "15",  "15"];
-        let iconImg = createImageWithAttributes (iconImgAttrib);
+        let iconImgAttribute = [iconUrl, "availabilityIcon", "15",  "15"];
+        let iconImg = createImageWithAttributes (iconImgAttribute);
         goodIcon.append(iconImg);
         goodInnerElements[2].append(goodIcon);
 
-    //Создание текста статуса
-    let stateAtr = ["div", "productStateText", "state"];
-    let goodState = createElementWithAttributes(stateAtr);
+    let stateAttribute = ["div", "productStateText", goodInformation["state"]];
+    let goodState = createElementWithAttributes(stateAttribute);
     goodInnerElements[2].append(goodState);
 
 
-    let func = "addOnePurchase("+JSON.stringify(goodInformation)+")";
-    goodInnerElements[4].setAttribute("onclick", func);
+    let addPurchase = "addOnePurchase("+JSON.stringify(goodInformation)+")";
+    goodInnerElements[4].setAttribute("onclick", addPurchase);
 
 
     good.append(...goodInnerElements);
@@ -207,10 +189,9 @@ function createItem(goodInformation){
     return good;
 }
 
-//Создание блока товаров
 function getListContent(dataCategory) {
   let goodsList = document.createElement("div");
-  goodsList.setAttribute("class","product-category");
+  goodsList.setAttribute("class","productCategory");
   for (var key in dataCategory) {
       goodsList.append(createItem(dataCategory[key]));
   }
@@ -218,7 +199,6 @@ function getListContent(dataCategory) {
 
 }
 
-//Вывод всех товаров
 function showGoods(dataGoods){
     let categoryNames = ["Приставки", "Игры", "Аксессуары"];
 
@@ -229,7 +209,7 @@ function showGoods(dataGoods){
             let ind = i*3 + k;
             if (isEmptyObject(dataGoods[ind]) == false ){
                 let goodsCategoryName = document.createElement("div");
-                goodsCategoryName.setAttribute("class","category-name");
+                goodsCategoryName.setAttribute("class","categoryName");
                 goodsCategoryName.innerHTML = categoryNames[k];
 
                 document.getElementById(id).append(goodsCategoryName);
@@ -241,7 +221,6 @@ function showGoods(dataGoods){
 
 let total = 0;
 
-//отрисовка корзины
 const renderCart = () => {
     let out = '<table> <tr> <th>Наименование</th> <th>Цена, руб</th>';
     out+='<th>Кол-во, шт</th> <th>Стоимость, руб</th> <th> </th> </tr>';
@@ -337,7 +316,6 @@ let json = function (response) {
     return response.json()
 }
 
-//Получение данных из файла
 document.addEventListener('DOMContentLoaded', function(){
     fetch("./../res/db.json")
         .then(status)
