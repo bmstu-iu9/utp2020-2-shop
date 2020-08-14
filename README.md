@@ -14,6 +14,7 @@
     ```
     npm i chalk
     npm i nodemon -D
+    npm i express --save
     ```
 
 3. Запустить приложение (Порт веб-сервера - 3000)
