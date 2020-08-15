@@ -303,7 +303,7 @@ main {
    Вкладки с товарами
 //////////*/
 
-.category-name {
+.categoryName {
     font-size: 30px;
     font-weight: 200;
     margin-top: 25px;
@@ -311,7 +311,7 @@ main {
     margin-left: 30px;
 }
 
-.product-category {
+.productCategory {
     overflow: hidden;
 }
 
