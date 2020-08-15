@@ -166,9 +166,9 @@ function createItem(goodInformation){
 
         let iconUrl;
         if (goodInformation["state"] == "В наличии")
-        iconUrl = "img/icons/confirmation-icon.png";
+            iconUrl = "img/icons/confirmation-icon.png";
         else
-        iconUrl = "img/icons/exclamation-icon.png";
+            iconUrl = "img/icons/exclamation-icon.png";
 
         let iconImgAttribute = [iconUrl, "availabilityIcon", "15",  "15"];
         let iconImg = createImageWithAttributes (iconImgAttribute);
@@ -220,6 +220,14 @@ function showGoods(dataGoods){
 }
 
 let total = 0;
+let numberOfPurchases = 0;
+
+function showNumberOfPurchases () {
+    if (numberOfPurchases > 0)
+        document.getElementById('basketPurchases').textContent = numberOfPurchases;
+    else
+        document.getElementById('basketPurchases').textContent = '';
+}
 
 const renderCart = () => {
     let out = '<table> <tr> <th>Наименование</th> <th>Цена, руб</th>';
@@ -274,6 +282,8 @@ const plusFunction = id => {
     } else {
         cart.get(id)['count']++;
         total += cart.get(id)['object']['price'];
+        numberOfPurchases++;
+        showNumberOfPurchases();
         alert('Товар добавлен в корзину.');
     }
     renderCart();
@@ -286,6 +296,8 @@ const minusFunction = id => {
     }
     cart.get(id)['count']--;
     total -= cart.get(id)['object']['price'];
+    numberOfPurchases--;
+    showNumberOfPurchases();
     renderCart();
 }
 
@@ -296,6 +308,8 @@ const deleteFunction = id => {
         return;
     }
     total -= cart.get(id)['count'] * cart.get(id)['object']['price'];
+    numberOfPurchases -= cart.get(id)['count'];
+    showNumberOfPurchases();
     cart.delete(id);
     renderCart();
 }
@@ -303,6 +317,8 @@ const deleteFunction = id => {
 const cleanCart = () => {
     cart.clear();
     total = 0;
+    numberOfPurchases = 0;
+    showNumberOfPurchases();
     emptyCart();
 }
 
