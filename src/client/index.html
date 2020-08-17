@@ -133,7 +133,7 @@
                                 <div class="empty_cart" id="empty_cart">Ваша корзина пуста!</div>
                                 <form id="list_of_items">
                                     </form>
-                                <button class="clean_cart button-submit" id="clean_cart">Очистить корзину</button>
+                                <button class="button_clean_cart button-submit" id="clean_cart">Очистить корзину</button>
                             </div>
                         </div>
                     </div>
@@ -141,6 +141,18 @@
             </div>
         </div>
     </main>
+    <!-- Модальные окна -->
+    <div class="modal_overlay" data-close=""></div>
+    <div id="modal_notice" class="dlg_modal">
+        <!--<span class="closer" data-close=""></span>-->
+        <span id="modal_notice_text" class="modal_text"></span>
+        <button class="button_modal_cancel" data-close="">Закрыть</button>
+    </div>
+    <div id="modal_confirmation" class="dlg_modal">
+        <span class="modal_text">Очистить корзину?</span>
+        <button class="button_modal_cancel button_modal_yes">Да</button>
+        <button class="button_modal_cancel button_modal_no">Нет</button>
+    </div>
     <!--  Инфо о компании  -->
     <div class="info_about_company center">
         <div class="info_title">
@@ -321,31 +333,31 @@
                     Контакты:
                 </div>
                 <div class="row">
-                    <div class="img">
+                    <div class="contacts_img">
                         <img src="img/icons/mail-icon.png" alt="mail" />
                     </div>
-                    <div class="img contacts_text">
+                    <div class="contacts_img contacts_text">
                         post@gmail.com
                     </div>
                 </div>
                 <div class="row">
-                    <div class="img">
+                    <div class="contacts_img">
                         <img src="img/icons/phone-icon.png" alt="phone" />
                     </div>
-                    <div class="img contacts_text">
+                    <div class="contacts_img contacts_text">
                         +7 (912) 345-67-89
                     </div>
                 </div>
             </div>
             <div class="column">
                 <div class="row">
-                    <div class="img icon_product">
+                    <div class="contacts_img icon_product">
                         <img src="img/icons/nintendo-icon.png" alt="nintendo" />
                     </div>
-                    <div class="img icon_product">
+                    <div class="contacts_img icon_product">
                         <img src="img/icons/playstation-icon.png" alt="playstation" />
                     </div>
-                    <div class="img icon_product">
+                    <div class="contacts_img icon_product">
                         <img src="img/icons/xbox-icon.png" alt="xbox" />
                     </div>
                 </div>

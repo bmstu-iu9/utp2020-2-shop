@@ -128,11 +128,17 @@ function addOnePurchase (goodInformation) {
     if (res === undefined) {
         if (goodInformation["count_of_product"] > 0) {
             cart.set(id, {"count": 0,"object": goodInformation});
-            plusFunction(id);
+            increaseNumberOfProducts(id);
         }
-        else alert ("Товара нет в наличии.");
+        else {
+            document.getElementById('modal_notice_text').textContent =
+                'Товара нет в наличии.';
+            modalID = 'modal_notice';
+            modalShow(document.getElementById(modalID));
+            timeoutID = setTimeout(modalCloseInTime, 3000);
+        }
     } else {
-        plusFunction(id);
+        increaseNumberOfProducts(id);
     }
 }
 
@@ -222,6 +228,9 @@ function showGoods(dataGoods){
 let total = 0;
 let numberOfPurchases = 0;
 
+let timeoutID = null,
+    modalID = null;
+
 function showNumberOfPurchases () {
     if (numberOfPurchases > 0)
         document.getElementById('basketPurchases').textContent = numberOfPurchases;
@@ -259,49 +268,63 @@ emptyCart();
 
 document.onclick = event => {
     if (event.target.classList.contains('plus')) {
-        plusFunction(event.target.dataset.id);
-    }
+        increaseNumberOfProducts(event.target.dataset.id);
+    } else 
     if (event.target.classList.contains('minus')) {
-        minusFunction(event.target.dataset.id);
-    }
+        reduceNumberOfProducts(event.target.dataset.id);
+    } else
     if (event.target.classList.contains('delete')) {
-        deleteFunction(event.target.dataset.id);
-    }
-    if (event.target.classList.contains('clean_cart')) {
-        let confirmation = confirm("Очистить корзину?");
-        if (confirmation) {
-            cleanCart();
-        }
+        removeProductFromCart(event.target.dataset.id);
+    } else
+    if (event.target.classList.contains('button_clean_cart')) {
+        modalID = 'modal_confirmation';
+        modalShow(document.getElementById(modalID));
+    } else
+    if (event.target.classList.contains('button_modal_yes')) {
+        modalClose(Event, document.getElementById(modalID));
+        cleanCart();
+    } else
+    if (event.target.classList.contains('button_modal_no')) {
+        modalClose(Event, document.getElementById(modalID));
     }
 }
 
-const plusFunction = id => {
+const increaseNumberOfProducts = id => {
     id = Number(id);
     if (cart.get(id)['object']['count_of_product'] == cart.get(id)['count']) {
-        alert('Извините! Количество данного товара ограничено. Невозможно добавить товар.');
+        document.getElementById('modal_notice_text').textContent =
+            'Извините! Количество данного товара ограничено. Невозможно добавить товар.';
+        modalID = 'modal_notice'
+        modalShow(document.getElementById(modalID));
+        timeoutID = setTimeout(modalCloseInTime, 3000);
     } else {
         cart.get(id)['count']++;
         total += cart.get(id)['object']['price'];
         numberOfPurchases++;
         showNumberOfPurchases();
-        alert('Товар добавлен в корзину.');
+        document.getElementById('modal_notice_text').textContent =
+            'Товар добавлен в корзину.';
+        modalID = 'modal_notice';
+        modalShow(document.getElementById(modalID));
+        timeoutID = setTimeout(modalCloseInTime, 1000);
     }
     renderCart();
 }
 
-const minusFunction = id => {
+const reduceNumberOfProducts = id => {
     id = Number(id);
     if (cart.get(id)['count']-1 == 0) {
-        deleteFunction(id);
+        removeProductFromCart(id);
+    } else {
+        cart.get(id)['count']--;
+        total -= cart.get(id)['object']['price'];
+        numberOfPurchases--;
+        showNumberOfPurchases();
+        renderCart();
     }
-    cart.get(id)['count']--;
-    total -= cart.get(id)['object']['price'];
-    numberOfPurchases--;
-    showNumberOfPurchases();
-    renderCart();
 }
 
-const deleteFunction = id => {
+const removeProductFromCart = id => {
     id = Number(id);
     if (cart.size == 1) {
         cleanCart();
@@ -344,3 +367,44 @@ document.addEventListener('DOMContentLoaded', function(){
             console.log('error', error)
         })
 })
+
+let modalOverlay = document.querySelector('.modal_overlay'),
+    mStatus	= false;
+
+const modalCloseInTime = event => {
+    if (mStatus) {
+        modalClose(event, document.getElementById(modalID));
+    }
+}
+
+const modalCloseOnClick = event => {
+    if (mStatus && (modalID === 'modal_notice') && 
+        (!event.keyCode || event.keyCode === 27)) {
+        modalClose(event, document.getElementById(modalID));
+    }
+}
+
+let	mClose	= document.querySelectorAll('[data-close]');
+[].forEach.call(mClose, function(el) {
+		el.addEventListener('click', modalCloseOnClick);
+});
+
+document.addEventListener('keydown', modalCloseOnClick);
+
+const modalShow = modal => {
+    modalOverlay.classList.remove('fadeOut');
+    modalOverlay.classList.add('fadeIn');
+    modal.classList.remove('fadeOut');
+    modal.classList.add('fadeIn');
+    mStatus = true;
+}
+
+const modalClose = (event, modal)  => {
+    clearTimeout(timeoutID);
+    modal.classList.remove('fadeIn');
+    modal.classList.add('fadeOut');
+
+    modalOverlay.classList.remove('fadeIn');
+    modalOverlay.classList.add('fadeOut');
+    mStatus = false;
+}
