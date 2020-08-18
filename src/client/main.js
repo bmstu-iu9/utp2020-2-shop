@@ -139,7 +139,11 @@ function addOnePurchase (goodInformation) {
     let res = cart.get(id);
     if (res === undefined) {
         if (goodInformation["count_of_product"] > 0) {
+            if (cart.size === 0) {
+                renderCart();
+            }
             cart.set(id, {"count": 0,"object": goodInformation});
+            createProductInCart(id);
             increaseNumberOfProducts(id);
         }
         else {
@@ -250,42 +254,74 @@ function showNumberOfPurchases () {
         document.getElementById('basketPurchases').textContent = '';
 }
 
+const createProductInCart = id => {
+    let value = cart.get(id);
+    
+    let productString = document.createElement('tr');
+    productString.id = id;
+    let colNameOfProduct = document.createElement('td');
+    colNameOfProduct.append(value['object']['name_of_product']);
+       
+    let colPrice = document.createElement('td');
+    colPrice.append(value['object']['price']);
+       
+    let colNumberOfGoods = document.createElement('td');
+    colNumberOfGoods.setAttribute('width', '150');
+       
+    let minusButton = document.createElement('button');
+    minusButton.className = 'cart_button button_minus';
+    minusButton.setAttribute('data-id', id);
+    
+    let numberOfGoods = document.createElement('span');
+    numberOfGoods.id = 'number_of_goods' + id; 
+       
+    let plusButton = document.createElement('button');
+    plusButton.className = 'cart_button button_plus';
+    plusButton.setAttribute('data-id', id);
+
+    colNumberOfGoods.append(minusButton, numberOfGoods, plusButton);
+
+    let colTotalPrice = document.createElement('td');
+    let totalPrice = document.createElement('span');
+    totalPrice.id = 'total_price' + id;
+    colTotalPrice.append(totalPrice);
+
+    let colDeleteButton = document.createElement('td');
+    let deleteButton = document.createElement('td');
+    deleteButton.className = 'cart_button button_delete';
+    deleteButton.setAttribute('data-id', id);
+    colDeleteButton.append(deleteButton);
+
+    productString.append(colNameOfProduct, colPrice, colNumberOfGoods,
+                        colTotalPrice, colDeleteButton);
+
+    document.getElementById('table_view').append(productString);
+}
+
 const renderCart = () => {
-    let out = '<table> <tr> <th>Наименование</th> <th>Цена, руб</th>';
-    out+='<th>Кол-во, шт</th> <th>Стоимость, руб</th> <th> </th> </tr>';
-    for (let item of cart) {
-        out+='<tr>'
-        out+='<td>'+item[1]['object']['name_of_product'] + '</td>';
-        out+='<td>'+item[1]['object']['price']+'</td>';
-        out+='<td width="150">'+'<button class="button minus" data-id="'+item[0]+'"> </button>';
-        out+=item[1]['count'];
-        out+='<button class="button plus" data-id="'+item[0]+'"> </button>'+'</td>';
-        out+='<td>'+item[1]['object']['price'] * item[1]['count']+'</td>';
-        out+='<td> <button class="button delete" data-id="'+item[0]+'"> </button> </td>';
-        out+='</tr>';
-    };
-    out+='</table> <div class="total">ИТОГО: <span class="total_num">' + total + ' руб.</span> </div>';
-    document.getElementById('list_of_items').innerHTML = out;
     document.getElementById('empty_cart').style.display = 'none';
     document.getElementById('clean_cart').style.visibility = 'visible';
+    document.getElementById('table_view').style.visibility = 'visible';
+    document.getElementById('total').style.visibility = 'visible';
 }
 
 const emptyCart = () => {
     document.getElementById('empty_cart').style.display = 'block';
     document.getElementById('clean_cart').style.visibility = 'hidden';
-    document.getElementById('list_of_items').innerHTML = '';
+    document.getElementById('table_view').style.visibility = 'hidden';
+    document.getElementById('total').style.visibility = 'hidden';
 }
 
 emptyCart();
 
 document.onclick = event => {
-    if (event.target.classList.contains('plus')) {
+    if (event.target.classList.contains('button_plus')) {
         increaseNumberOfProducts(event.target.dataset.id);
     } else 
-    if (event.target.classList.contains('minus')) {
+    if (event.target.classList.contains('button_minus')) {
         reduceNumberOfProducts(event.target.dataset.id);
     } else
-    if (event.target.classList.contains('delete')) {
+    if (event.target.classList.contains('button_delete')) {
         removeProductFromCart(event.target.dataset.id);
     } else
     if (event.target.classList.contains('button_clean_cart')) {
@@ -303,6 +339,7 @@ document.onclick = event => {
 
 const increaseNumberOfProducts = id => {
     id = Number(id);
+    
     if (cart.get(id)['object']['count_of_product'] == cart.get(id)['count']) {
         document.getElementById('modal_notice_text').textContent =
             'Извините! Количество данного товара ограничено. Невозможно добавить товар.';
@@ -310,46 +347,66 @@ const increaseNumberOfProducts = id => {
         modalShow(document.getElementById(modalID));
         timeoutID = setTimeout(modalCloseInTime, 3000);
     } else {
-        cart.get(id)['count']++;
+        let newCount = ++cart.get(id)['count'];
+        document.getElementById('number_of_goods' + id).textContent = newCount;
+        document.getElementById('total_price' + id).textContent =
+            newCount * cart.get(id)['object']['price'];
+        
         total += cart.get(id)['object']['price'];
+        document.getElementById('total_num').textContent = total + ' руб.';
+        
         numberOfPurchases++;
         showNumberOfPurchases();
+        
         document.getElementById('modal_notice_text').textContent =
             'Товар добавлен в корзину.';
         modalID = 'modal_notice';
         modalShow(document.getElementById(modalID));
         timeoutID = setTimeout(modalCloseInTime, 1000);
     }
-    renderCart();
 }
 
 const reduceNumberOfProducts = id => {
     id = Number(id);
+    
     if (cart.get(id)['count']-1 == 0) {
         removeProductFromCart(id);
     } else {
-        cart.get(id)['count']--;
+        let newCount = --cart.get(id)['count'];
+        document.getElementById('number_of_goods' + id).textContent = newCount;
+        document.getElementById('total_price' + id).textContent =
+            newCount * cart.get(id)['object']['price'];
         total -= cart.get(id)['object']['price'];
+        document.getElementById('total_num').textContent = total + ' руб.';
+        
         numberOfPurchases--;
         showNumberOfPurchases();
-        renderCart();
     }
 }
 
 const removeProductFromCart = id => {
     id = Number(id);
-    if (cart.size == 1) {
-        cleanCart();
-        return;
-    }
+    
+    let product = document.getElementById(id);
+    product.parentNode.removeChild(product);
+    
     total -= cart.get(id)['count'] * cart.get(id)['object']['price'];
+    document.getElementById('total_num').textContent = total + ' руб.';
     numberOfPurchases -= cart.get(id)['count'];
     showNumberOfPurchases();
     cart.delete(id);
-    renderCart();
+    
+    if (cart.size === 0) {
+        emptyCart();
+    }
 }
 
 const cleanCart = () => {
+    for (let id of cart.keys()) {
+        let product = document.getElementById(id);
+        product.parentNode.removeChild(product);
+    }
+    
     cart.clear();
     total = 0;
     numberOfPurchases = 0;
