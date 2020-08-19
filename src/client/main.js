@@ -217,8 +217,18 @@ function getListContent(dataCategory) {
 
 }
 
-function showGoods(dataGoods){
+function clearCategoryTabs() {
+    for (let i = 0; i < 4; ++i){
+        let id = 'tab-'+(i);
+        let catagoryTab = document.getElementById(id);
+        if (catagoryTab !== null)
+            catagoryTab.innerHTML = '';
+    }
+}
+
+function showGoods(dataGoods) {
     let categoryNames = ["Приставки", "Игры", "Аксессуары"];
+    clearCategoryTabs();
 
     for (let i = 0; i < 3; ++i){
         let id = 'tab-'+(i+1);
@@ -281,7 +291,7 @@ emptyCart();
 document.onclick = event => {
     if (event.target.classList.contains('plus')) {
         increaseNumberOfProducts(event.target.dataset.id);
-    } else 
+    } else
     if (event.target.classList.contains('minus')) {
         reduceNumberOfProducts(event.target.dataset.id);
     } else
@@ -357,29 +367,6 @@ const cleanCart = () => {
     emptyCart();
 }
 
-let status = function (response) {
-    if (response.status !== 200) {
-        return Promise.reject(new Error(response.statusText))
-    }
-    return Promise.resolve(response)
-}
-let json = function (response) {
-    return response.json()
-}
-
-document.addEventListener('DOMContentLoaded', function(){
-    fetch("./../res/db.json")
-        .then(status)
-        .then(json)
-        .then(function (dataGoods) {
-            console.log('data', dataGoods);
-            showGoods(dataGoods);
-        })
-        .catch(function (error) {
-            console.log('error', error)
-        })
-})
-
 let modalOverlay = document.querySelector('.modal_overlay'),
     mStatus	= false;
 
@@ -390,7 +377,7 @@ const modalCloseInTime = event => {
 }
 
 const modalCloseOnClick = event => {
-    if (mStatus && (modalID === 'modal_notice') && 
+    if (mStatus && (modalID === 'modal_notice') &&
         (!event.keyCode || event.keyCode === 27)) {
         modalClose(event, document.getElementById(modalID));
     }
@@ -420,3 +407,30 @@ const modalClose = (event, modal)  => {
     modalOverlay.classList.add('fadeOut');
     mStatus = false;
 }
+
+function status (response) {
+    if (response.status !== 200) {
+        return Promise.reject(new Error(response.statusText))
+    }
+    return Promise.resolve(response)
+}
+
+function json (response) {
+    return response.json()
+}
+
+function getJsonData (func) {
+    fetch("./../res/db.json")
+        .then(status)
+        .then(json)
+        .then(function (dataGoods) {
+            func(dataGoods);
+        })
+        .catch(function (error) {
+            console.log('error', error);
+        })
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+    getJsonData(showGoods);
+})
