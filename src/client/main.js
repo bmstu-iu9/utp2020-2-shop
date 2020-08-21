@@ -1,11 +1,11 @@
 "use strict"
 
 const selectElement = document.querySelector("[data_select]");
+const selectedSearchCategory = document.querySelector("[data_select_title]");
 
 selectElement.addEventListener("click", function(event) {
     if (event.target.hasAttribute("data_select_item")) {
         const itemTitle = event.target.getAttribute("data_select_item");
-        console.log(itemTitle);
         event.target.closest("[data_select]").querySelector("[data_select_title]").textContent = itemTitle;
         event.target.closest("[data_select]").querySelector(".header_select_dropdown").classList.toggle("hidden");
     } else {
@@ -35,6 +35,7 @@ if (feedback_form_el) {
 }
 
 let cart = new Map();
+let pathToJsonWithGoods = "./../res/db.json";
 
 function submitForm(e) {
     if (cart.size === 0) {
@@ -129,7 +130,7 @@ function createElementWithAttributes (attributesList){
     let element = document.createElement(attributesList[0]);
     element.setAttribute("class", attributesList[1]);
     if (attributesList.length === 3)
-        element.innerHTML = attributesList[2];
+        element.textContent = attributesList[2];
 
     return element;
 }
@@ -160,8 +161,8 @@ function addOnePurchase (goodInformation) {
 
 function createItem(goodInformation){
 
-    let goodAttribute = ["div", "product"]
-    let good = createElementWithAttributes(goodAttribute);
+    let goodAttributes = ["div", "product"]
+    let good = createElementWithAttributes(goodAttributes);
 
     let innerElementsInformation = [
         ["div", "productImg"],
@@ -174,17 +175,17 @@ function createItem(goodInformation){
     let goodInnerElements = [];
 
     for (let i = 0; i < innerElementsInformation.length; ++i){
-        let elementAttribute = innerElementsInformation[i];
-        let element = createElementWithAttributes(elementAttribute);
+        let elementAttributes = innerElementsInformation[i];
+        let element = createElementWithAttributes(elementAttributes);
         goodInnerElements.push(element);
     }
 
-    let photoAttribute = [goodInformation["url"], "product photo", "220",  "220"];
-    let goodPhoto = createImageWithAttributes (photoAttribute);
+    let photoAttributes = [goodInformation["url"], "product photo", "220",  "220"];
+    let goodPhoto = createImageWithAttributes (photoAttributes);
     goodInnerElements[0].append(goodPhoto);
 
-    let iconAttribute = ["div", "availabilityIcon"]
-    let goodIcon = createElementWithAttributes(iconAttribute);
+    let iconAttributes = ["div", "availabilityIcon"]
+    let goodIcon = createElementWithAttributes(iconAttributes);
 
         let iconUrl;
         if (goodInformation["state"] == "В наличии")
@@ -192,13 +193,13 @@ function createItem(goodInformation){
         else
             iconUrl = "img/icons/exclamation-icon.png";
 
-        let iconImgAttribute = [iconUrl, "availabilityIcon", "15",  "15"];
-        let iconImg = createImageWithAttributes (iconImgAttribute);
+        let iconImgAttributes = [iconUrl, "availabilityIcon", "15",  "15"];
+        let iconImg = createImageWithAttributes (iconImgAttributes);
         goodIcon.append(iconImg);
         goodInnerElements[2].append(goodIcon);
 
-    let stateAttribute = ["div", "productStateText", goodInformation["state"]];
-    let goodState = createElementWithAttributes(stateAttribute);
+    let stateAttributes = ["div", "productStateText", goodInformation["state"]];
+    let goodState = createElementWithAttributes(stateAttributes);
     goodInnerElements[2].append(goodState);
 
 
@@ -240,9 +241,8 @@ function showGoods(dataGoods) {
         for (let k = 0; k < 3; ++k){
             let ind = i*3 + k;
             if (isEmptyObject(dataGoods[ind]) == false ){
-                let goodsCategoryName = document.createElement("div");
-                goodsCategoryName.setAttribute("class","categoryName");
-                goodsCategoryName.innerHTML = categoryNames[k];
+                let goodsCategoryNameAttributes = ["div","categoryName",categoryNames[k]];
+                let goodsCategoryName = createElementWithAttributes(goodsCategoryNameAttributes);
 
                 document.getElementById(id).append(goodsCategoryName);
                 document.getElementById(id).append(getListContent(dataGoods[ind]));
@@ -266,25 +266,25 @@ function showNumberOfPurchases () {
 
 const createProductInCart = id => {
     let value = cart.get(id);
-    
+
     let productString = document.createElement('tr');
     productString.id = id;
     let colNameOfProduct = document.createElement('td');
     colNameOfProduct.append(value['object']['name_of_product']);
-       
+
     let colPrice = document.createElement('td');
     colPrice.append(value['object']['price']);
-       
+
     let colNumberOfGoods = document.createElement('td');
     colNumberOfGoods.setAttribute('width', '150');
-       
+
     let minusButton = document.createElement('button');
     minusButton.className = 'cart_button button_minus';
     minusButton.setAttribute('data-id', id);
-    
+
     let numberOfGoods = document.createElement('span');
-    numberOfGoods.id = 'number_of_goods' + id; 
-       
+    numberOfGoods.id = 'number_of_goods' + id;
+
     let plusButton = document.createElement('button');
     plusButton.className = 'cart_button button_plus';
     plusButton.setAttribute('data-id', id);
@@ -327,7 +327,7 @@ emptyCart();
 document.onclick = event => {
     if (event.target.classList.contains('button_plus')) {
         increaseNumberOfProducts(event.target.dataset.id);
-    } else 
+    } else
     if (event.target.classList.contains('button_minus')) {
         reduceNumberOfProducts(event.target.dataset.id);
     } else
@@ -349,7 +349,7 @@ document.onclick = event => {
 
 const increaseNumberOfProducts = id => {
     id = Number(id);
-    
+
     if (cart.get(id)['object']['count_of_product'] == cart.get(id)['count']) {
         document.getElementById('modal_notice_text').textContent =
             'Извините! Количество данного товара ограничено. Невозможно добавить товар.';
@@ -361,13 +361,13 @@ const increaseNumberOfProducts = id => {
         document.getElementById('number_of_goods' + id).textContent = newCount;
         document.getElementById('total_price' + id).textContent =
             newCount * cart.get(id)['object']['price'];
-        
+
         total += cart.get(id)['object']['price'];
         document.getElementById('total_num').textContent = total + ' руб.';
-        
+
         numberOfPurchases++;
         showNumberOfPurchases();
-        
+
         document.getElementById('modal_notice_text').textContent =
             'Товар добавлен в корзину.';
         modalID = 'modal_notice';
@@ -378,7 +378,7 @@ const increaseNumberOfProducts = id => {
 
 const reduceNumberOfProducts = id => {
     id = Number(id);
-    
+
     if (cart.get(id)['count']-1 == 0) {
         removeProductFromCart(id);
     } else {
@@ -388,7 +388,7 @@ const reduceNumberOfProducts = id => {
             newCount * cart.get(id)['object']['price'];
         total -= cart.get(id)['object']['price'];
         document.getElementById('total_num').textContent = total + ' руб.';
-        
+
         numberOfPurchases--;
         showNumberOfPurchases();
     }
@@ -396,16 +396,16 @@ const reduceNumberOfProducts = id => {
 
 const removeProductFromCart = id => {
     id = Number(id);
-    
+
     let product = document.getElementById(id);
     product.parentNode.removeChild(product);
-    
+
     total -= cart.get(id)['count'] * cart.get(id)['object']['price'];
     document.getElementById('total_num').textContent = total + ' руб.';
     numberOfPurchases -= cart.get(id)['count'];
     showNumberOfPurchases();
     cart.delete(id);
-    
+
     if (cart.size === 0) {
         emptyCart();
     }
@@ -416,7 +416,7 @@ const cleanCart = () => {
         let product = document.getElementById(id);
         product.parentNode.removeChild(product);
     }
-    
+
     cart.clear();
     total = 0;
     numberOfPurchases = 0;
@@ -465,6 +465,92 @@ const modalClose = (event, modal)  => {
     mStatus = false;
 }
 
+let searchGoodsButton = document.getElementById('header_search');
+
+searchGoodsButton.addEventListener('submit',function(e){
+    e.preventDefault();
+
+    let searchCategory = selectedSearchCategory.textContent;
+    if (searchCategory === "Категория")
+        alert ("Выберете категорию для поиска.");
+    else
+        getJsonData(pathToJsonWithGoods, searchAndShowGoods);
+});
+
+function makeBigram (word, bigram){
+    if (word.length == 1){
+        bigram.push(word);
+    }
+    else {
+        length = word.length -1;
+        for (let i = 0; i < length; i++){
+            bigram.push(word.substr(i,2));
+        }
+    }
+}
+
+function bigramSearchGoods (searchResults, searchAdditionalResults, dataGoods) {
+    let searchCategory = selectedSearchCategory.textContent;
+    let searchInput = document.getElementById("header_search_input").value;
+
+    let categoryNumbers = {
+        "Playstation": 0,
+        "Nintendo Switch": 1,
+        "Xbox": 2
+    }
+    let categoryInputNumber = categoryNumbers[searchCategory];
+
+    for (let i = 0; i < 3; i++){
+        let index = categoryInputNumber*3 + i;
+        let dataCategory = dataGoods[index];
+
+        for (var key in dataCategory) {
+            let goodName = dataCategory[key]["name_of_product"];
+            if (searchInput === goodName)
+            searchResults[key] = dataCategory[key];
+        }
+    }
+}
+
+function searchAndShowGoods (dataGoods) {
+    let id = "tab-5";
+    let searchTab = document.getElementById(id);
+    searchTab.innerHTML = '';
+
+    let searchTabNav = document.getElementById("tab-nav-5");
+    searchTabNav.checked = true;
+
+    let resultTitle = "";
+    let searchResults = new Object();
+    let searchAdditionalResults = new Object();
+
+    bigramSearchGoods(searchResults, searchAdditionalResults, dataGoods);
+
+
+    if (isEmptyObject(searchResults) == true) {
+        resultTitle = "Ничего не найдено.";
+    }
+    else {
+        resultTitle = "Результаты поиска";
+    }
+
+    let searchResultTitleAttributes = ["div","categoryName", resultTitle];
+    let searchResultTitle = createElementWithAttributes(searchResultTitleAttributes);
+
+    searchTab.append(searchResultTitle);
+    searchTab.append(getListContent(searchResults));
+
+
+    if (isEmptyObject(searchAdditionalResults) == false) {
+        let additionalResultTitleAttributes = ["div","categoryName", "Похожие результаты"];
+        let additionalResultTitle = createElementWithAttributes(additionalResultTitleAttributes);
+
+        searchTab.append(additionalResultTitle);
+        searchTab.append(getListContent(searchAdditionalResults));
+    }
+
+}
+
 function status (response) {
     if (response.status !== 200) {
         return Promise.reject(new Error(response.statusText))
@@ -476,8 +562,8 @@ function json (response) {
     return response.json()
 }
 
-function getJsonData (func) {
-    fetch("./../res/db.json")
+function getJsonData (path, func) {
+    fetch(path)
         .then(status)
         .then(json)
         .then(function (dataGoods) {
@@ -489,5 +575,5 @@ function getJsonData (func) {
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-    getJsonData(showGoods);
+    getJsonData(pathToJsonWithGoods, showGoods);
 })
