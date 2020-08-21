@@ -158,6 +158,10 @@ function addOnePurchase (goodInformation) {
     }
 }
 
+function showInformation (goodInformation){
+    alert("information");
+}
+
 function createItem(goodInformation){
 
     let goodAttribute = ["div", "product"]
@@ -179,9 +183,17 @@ function createItem(goodInformation){
         goodInnerElements.push(element);
     }
 
+    let informationButtonAttributes = ["button","informationButton"];
+    let informationButton = createElementWithAttributes(informationButtonAttributes);
+
+    let showInformation = "showInformation("+JSON.stringify(goodInformation)+")";
+    informationButton.setAttribute("onclick", showInformation);
+    goodInnerElements[0].append(informationButton);
+
     let photoAttribute = [goodInformation["url"], "product photo", "220",  "220"];
     let goodPhoto = createImageWithAttributes (photoAttribute);
-    goodInnerElements[0].append(goodPhoto);
+    informationButton.append(goodPhoto);
+
 
     let iconAttribute = ["div", "availabilityIcon"]
     let goodIcon = createElementWithAttributes(iconAttribute);
@@ -266,25 +278,25 @@ function showNumberOfPurchases () {
 
 const createProductInCart = id => {
     let value = cart.get(id);
-    
+
     let productString = document.createElement('tr');
     productString.id = id;
     let colNameOfProduct = document.createElement('td');
     colNameOfProduct.append(value['object']['name_of_product']);
-       
+
     let colPrice = document.createElement('td');
     colPrice.append(value['object']['price']);
-       
+
     let colNumberOfGoods = document.createElement('td');
     colNumberOfGoods.setAttribute('width', '150');
-       
+
     let minusButton = document.createElement('button');
     minusButton.className = 'cart_button button_minus';
     minusButton.setAttribute('data-id', id);
-    
+
     let numberOfGoods = document.createElement('span');
-    numberOfGoods.id = 'number_of_goods' + id; 
-       
+    numberOfGoods.id = 'number_of_goods' + id;
+
     let plusButton = document.createElement('button');
     plusButton.className = 'cart_button button_plus';
     plusButton.setAttribute('data-id', id);
@@ -327,7 +339,7 @@ emptyCart();
 document.onclick = event => {
     if (event.target.classList.contains('button_plus')) {
         increaseNumberOfProducts(event.target.dataset.id);
-    } else 
+    } else
     if (event.target.classList.contains('button_minus')) {
         reduceNumberOfProducts(event.target.dataset.id);
     } else
@@ -349,7 +361,7 @@ document.onclick = event => {
 
 const increaseNumberOfProducts = id => {
     id = Number(id);
-    
+
     if (cart.get(id)['object']['count_of_product'] == cart.get(id)['count']) {
         document.getElementById('modal_notice_text').textContent =
             'Извините! Количество данного товара ограничено. Невозможно добавить товар.';
@@ -361,13 +373,13 @@ const increaseNumberOfProducts = id => {
         document.getElementById('number_of_goods' + id).textContent = newCount;
         document.getElementById('total_price' + id).textContent =
             newCount * cart.get(id)['object']['price'];
-        
+
         total += cart.get(id)['object']['price'];
         document.getElementById('total_num').textContent = total + ' руб.';
-        
+
         numberOfPurchases++;
         showNumberOfPurchases();
-        
+
         document.getElementById('modal_notice_text').textContent =
             'Товар добавлен в корзину.';
         modalID = 'modal_notice';
@@ -378,7 +390,7 @@ const increaseNumberOfProducts = id => {
 
 const reduceNumberOfProducts = id => {
     id = Number(id);
-    
+
     if (cart.get(id)['count']-1 == 0) {
         removeProductFromCart(id);
     } else {
@@ -388,7 +400,7 @@ const reduceNumberOfProducts = id => {
             newCount * cart.get(id)['object']['price'];
         total -= cart.get(id)['object']['price'];
         document.getElementById('total_num').textContent = total + ' руб.';
-        
+
         numberOfPurchases--;
         showNumberOfPurchases();
     }
@@ -396,16 +408,16 @@ const reduceNumberOfProducts = id => {
 
 const removeProductFromCart = id => {
     id = Number(id);
-    
+
     let product = document.getElementById(id);
     product.parentNode.removeChild(product);
-    
+
     total -= cart.get(id)['count'] * cart.get(id)['object']['price'];
     document.getElementById('total_num').textContent = total + ' руб.';
     numberOfPurchases -= cart.get(id)['count'];
     showNumberOfPurchases();
     cart.delete(id);
-    
+
     if (cart.size === 0) {
         emptyCart();
     }
@@ -416,7 +428,7 @@ const cleanCart = () => {
         let product = document.getElementById(id);
         product.parentNode.removeChild(product);
     }
-    
+
     cart.clear();
     total = 0;
     numberOfPurchases = 0;
