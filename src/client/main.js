@@ -159,6 +159,10 @@ function addOnePurchase (goodInformation) {
     }
 }
 
+function showInformation (goodInformation){
+    alert("information");
+}
+
 function createItem(goodInformation){
 
     let goodAttributes = ["div", "product"]
@@ -180,9 +184,16 @@ function createItem(goodInformation){
         goodInnerElements.push(element);
     }
 
-    let photoAttributes = [goodInformation["url"], "product photo", "220",  "220"];
-    let goodPhoto = createImageWithAttributes (photoAttributes);
-    goodInnerElements[0].append(goodPhoto);
+    let informationButtonAttributes = ["button","informationButton"];
+    let informationButton = createElementWithAttributes(informationButtonAttributes);
+
+    let showInformation = "showInformation("+JSON.stringify(goodInformation)+")";
+    informationButton.setAttribute("onclick", showInformation);
+    goodInnerElements[0].append(informationButton);
+
+    let photoAttribute = [goodInformation["url"], "product photo", "220",  "220"];
+    let goodPhoto = createImageWithAttributes (photoAttribute);
+    informationButton.append(goodPhoto);
 
     let iconAttributes = ["div", "availabilityIcon"]
     let goodIcon = createElementWithAttributes(iconAttributes);
