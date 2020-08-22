@@ -13,7 +13,7 @@ selectElement.addEventListener("click", function(event) {
     }
 })
 
-var config = {
+const config = {
     apiKey: "AIzaSyC3IZYPlLM7MyK2eT4CWQm-lrgqiqTxmiQ",
     authDomain: "feedback-form-6fbbd.firebaseapp.com",
     databaseURL: "https://feedback-form-6fbbd.firebaseio.com",
@@ -26,9 +26,9 @@ var config = {
 
 firebase.initializeApp(config);
 
-var messagesRef = firebase.database().ref('messages');
+let messagesRef = firebase.database().ref('messages');
 
-var feedback_form_el = document.getElementById('feedback_form');
+let feedback_form_el = document.getElementById('feedback_form');
 
 if (feedback_form_el) {
     feedback_form_el.addEventListener('submit', submitForm);
@@ -75,7 +75,29 @@ function submitForm(e) {
         data_submit_form.push(sum);
 
         saveMessage(data_submit_form);
+
+        ChangeAmountOfGoods();
     }
+}
+
+function ChangeAmountOfGoods() {
+    getJsonData(pathToJsonWithGoods, JsonFileChange);
+}
+
+async function JsonFileChange(dataGoods) {
+    for (let item of cart.keys()) {
+        if (dataGoods[Math.floor(item / 100) - 1][String(item)]["count_of_product"] > 0) {
+            dataGoods[Math.floor(item / 100) - 1][String(item)]["count_of_product"]--;
+        }
+    }
+
+    let response = await fetch('/order-confirmed', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(dataGoods)
+    });
 }
 
 function getInputVal(id) {
@@ -199,7 +221,7 @@ function createItem(goodInformation){
     let goodIcon = createElementWithAttributes(iconAttributes);
 
         let iconUrl;
-        if (goodInformation["state"] == "В наличии")
+        if (goodInformation["state"] === "В наличии")
             iconUrl = "img/icons/confirmation-icon.png";
         else
             iconUrl = "img/icons/exclamation-icon.png";
@@ -251,7 +273,7 @@ function showGoods(dataGoods) {
 
         for (let k = 0; k < 3; ++k){
             let ind = i*3 + k;
-            if (isEmptyObject(dataGoods[ind]) == false ){
+            if (isEmptyObject(dataGoods[ind]) === false ){
                 let goodsCategoryNameAttributes = ["div","categoryName",categoryNames[k]];
                 let goodsCategoryName = createElementWithAttributes(goodsCategoryNameAttributes);
 
@@ -361,7 +383,7 @@ document.onclick = event => {
 const increaseNumberOfProducts = id => {
     id = Number(id);
 
-    if (cart.get(id)['object']['count_of_product'] == cart.get(id)['count']) {
+    if (cart.get(id)['object']['count_of_product'] === cart.get(id)['count']) {
         document.getElementById('modal_notice_text').textContent =
             'Извините! Количество данного товара ограничено. Невозможно добавить товар.';
         modalID = 'modal_notice'
@@ -390,7 +412,7 @@ const increaseNumberOfProducts = id => {
 const reduceNumberOfProducts = id => {
     id = Number(id);
 
-    if (cart.get(id)['count']-1 == 0) {
+    if (cart.get(id)['count']-1 === 0) {
         removeProductFromCart(id);
     } else {
         let newCount = --cart.get(id)['count'];
@@ -489,7 +511,7 @@ searchGoodsButton.addEventListener('submit',function(e){
 });
 
 function makeBigram (word, bigram){
-    if (word.length == 1){
+    if (word.length === 1){
         bigram.push(word);
     }
     else {
@@ -538,7 +560,7 @@ function searchAndShowGoods (dataGoods) {
     bigramSearchGoods(searchResults, searchAdditionalResults, dataGoods);
 
 
-    if (isEmptyObject(searchResults) == true) {
+    if (isEmptyObject(searchResults) === true) {
         resultTitle = "Ничего не найдено.";
     }
     else {
