@@ -85,11 +85,8 @@ function ChangeAmountOfGoods() {
 }
 
 async function JsonFileChange(dataGoods) {
-    for (let item of cart.keys()) {
-        if (dataGoods[Math.floor(item / 100) - 1][String(item)]["count_of_product"] > 0) {
-            dataGoods[Math.floor(item / 100) - 1][String(item)]["count_of_product"]--;
-        }
-    }
+    dataGoods = ChangeCountOfProduct(dataGoods);
+    dataGoods = ChangeState(dataGoods);
 
     let response = await fetch('/order-confirmed', {
         method: 'POST',
@@ -98,6 +95,24 @@ async function JsonFileChange(dataGoods) {
         },
         body: JSON.stringify(dataGoods)
     });
+}
+
+function ChangeCountOfProduct(dataGoods) {
+    for (let item of cart.keys()) {
+        if (dataGoods[Math.floor(item / 100) - 1][String(item)]["count_of_product"] > 0) {
+            dataGoods[Math.floor(item / 100) - 1][String(item)]["count_of_product"]--;
+        }
+    }
+    return dataGoods;
+}
+
+function ChangeState(dataGoods) {
+    for (let item of cart.keys()) {
+        if (dataGoods[Math.floor(item / 100) - 1][String(item)]["count_of_product"] === 0) {
+            dataGoods[Math.floor(item / 100) - 1][String(item)]["state"] = "Ожидается поступление";
+        }
+    }
+    return dataGoods;
 }
 
 function getInputVal(id) {
