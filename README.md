@@ -15,6 +15,7 @@
     npm i chalk
     npm i nodemon -D
     npm i express --save
+    npm i readline-sync -S
     ```
 
 3. Запустить приложение (Порт веб-сервера - 3000)
@@ -23,6 +24,11 @@
     node server
     ```
 
+Для изменения файла с данными запустить скрипт
+
+    ```
+    node admin
+    ```
 
 
 ### Участники:
