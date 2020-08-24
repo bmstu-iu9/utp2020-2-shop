@@ -370,8 +370,6 @@ const emptyCart = () => {
     document.getElementById('total').style.visibility = 'hidden';
 }
 
-emptyCart();
-
 document.onclick = event => {
     if (event.target.classList.contains('button_plus')) {
         increaseNumberOfProducts(event.target.dataset.id);

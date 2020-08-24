@@ -15,9 +15,7 @@ app.post("/order-confirmed", urlencodedParser, function (request, response) {
     if(!request.body) {
         return response.sendStatus(400);
     }
-    fs.renameSync('../../res/db.json', '../../res/db.json.bak');
-    fs.appendFileSync('../../res/db.json', JSON.stringify(request.body, null, '\t'));
-    fs.unlinkSync('../../res/db.json.bak');
+    fs.writeFileSync('../../res/db.json', JSON.stringify(request.body, null, '\t'));
 });
 
 app.listen(3000, () => { console.log('Сервер работает') });

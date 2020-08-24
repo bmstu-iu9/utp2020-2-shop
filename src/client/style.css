@@ -536,6 +536,10 @@ th {
     background-color: #F1EFEF;
 }
 
+.table_view {
+    visibility: hidden;
+}
+
 .cart_button {
     background-color: white;
     border: none;
@@ -571,6 +575,7 @@ th {
     font-weight: 300;
     width: 50%;
     float: right;
+    visibility: hidden;
 }
 
 .total_num {
@@ -584,10 +589,12 @@ th {
 }
 
 .clean_cart:hover {
+    visibility: hidden;
     background-color: #30a9ff;
 }
 
 .empty_cart {
+    display: block;
     font-size: 25px;
     font-weight: 300;
     text-align: center;
