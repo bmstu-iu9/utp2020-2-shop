@@ -145,7 +145,7 @@ function isEmptyObject(obj) {
 function setAttributes(elem, obj) {
     for (var prop in obj) {
         if (obj.hasOwnProperty(prop))
-        elem[prop] = obj[prop];
+            elem[prop] = obj[prop];
     }
 }
 
@@ -196,8 +196,64 @@ function addOnePurchase (goodInformation) {
     }
 }
 
-function showInformation (goodInformation){
-    alert("information");
+function showInformation (goodInformation) {
+    let modal = document.getElementById("myModal");
+    let btn = document.getElementById(goodInformation["name_of_product"]);
+    let span = document.getElementsByClassName("close")[0];
+
+    function informationOutput() {
+        if (!document.getElementById(goodInformation["name_of_product"] + " name")) {
+            let nameOfProduct = goodInformation["name_of_product"];
+            let descriptionOfProduct = goodInformation["description"];
+            let urlOfProduct = goodInformation["url"];
+
+            let contentHtml = '<p id="' + nameOfProduct + ' name"><strong>Информация о товаре:</strong> ' + nameOfProduct + '</p>' +
+                '<p id="' + nameOfProduct + ' description"><strong>Описание: </strong>' + descriptionOfProduct + '</p>';
+            let imgHtml = '<img id="' + nameOfProduct + ' url" src="' + urlOfProduct + '" alt="image of product" />';
+
+            let modalContent = document.getElementById("modalContent");
+            let imgContent = document.getElementById("imgProduct");
+
+            modalContent.insertAdjacentHTML('beforeend', contentHtml);
+            imgContent.insertAdjacentHTML('beforeend', imgHtml);
+
+            let imageInInformationWindow = document.getElementById(nameOfProduct + " url");
+            imageInInformationWindow.setAttribute("class", "imageInInformationWindow");
+        }
+        else {
+            changeDisplay("block");
+        }
+    }
+
+    function onclick() {
+        modal.style.display = "none";
+        changeDisplay("none");
+    }
+
+    btn.onclick = function() {
+        modal.style.display = "block";
+        informationOutput();
+    }
+
+    span.onclick = function() {
+        onclick();
+    }
+
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            onclick();
+        }
+    }
+
+    function changeDisplay(displayValue) {
+        let nameOfProductCur = document.getElementById(goodInformation["name_of_product"] + " name");
+        let descriptionOfProductCur =  document.getElementById(goodInformation["name_of_product"] + " description");
+        let urlOfProductCur = document.getElementById(goodInformation["name_of_product"] + " url");
+
+        nameOfProductCur.style.display = displayValue;
+        descriptionOfProductCur.style.display = displayValue;
+        urlOfProductCur.style.display = displayValue;
+    }
 }
 
 function createItem(goodInformation){
@@ -226,6 +282,11 @@ function createItem(goodInformation){
 
     let showInformation = "showInformation("+JSON.stringify(goodInformation)+")";
     informationButton.setAttribute("onclick", showInformation);
+    informationButton.setAttribute('data-title', goodInformation["name_of_product"]);
+    informationButton.setAttribute('data-content', goodInformation["description"]);
+    informationButton.setAttribute('id', goodInformation["name_of_product"]);
+    informationButton.setAttribute('counter', 0);
+    informationButton.setAttribute('data-tooltip', 'Просмотреть информацию о товаре');
     goodInnerElements[0].append(informationButton);
 
     let photoAttribute = [goodInformation["url"], "product photo", "220",  "220"];
@@ -235,16 +296,16 @@ function createItem(goodInformation){
     let iconAttributes = ["div", "availabilityIcon"]
     let goodIcon = createElementWithAttributes(iconAttributes);
 
-        let iconUrl;
-        if (goodInformation["state"] === "В наличии")
-            iconUrl = "img/icons/confirmation-icon.png";
-        else
-            iconUrl = "img/icons/exclamation-icon.png";
+    let iconUrl;
+    if (goodInformation["state"] === "В наличии")
+        iconUrl = "img/icons/confirmation-icon.png";
+    else
+        iconUrl = "img/icons/exclamation-icon.png";
 
-        let iconImgAttributes = [iconUrl, "availabilityIcon", "15",  "15"];
-        let iconImg = createImageWithAttributes (iconImgAttributes);
-        goodIcon.append(iconImg);
-        goodInnerElements[2].append(goodIcon);
+    let iconImgAttributes = [iconUrl, "availabilityIcon", "15",  "15"];
+    let iconImg = createImageWithAttributes (iconImgAttributes);
+    goodIcon.append(iconImg);
+    goodInnerElements[2].append(goodIcon);
 
     let stateAttributes = ["div", "productStateText", goodInformation["state"]];
     let goodState = createElementWithAttributes(stateAttributes);
@@ -261,12 +322,12 @@ function createItem(goodInformation){
 }
 
 function getListContent(dataCategory) {
-  let goodsList = document.createElement("div");
-  goodsList.setAttribute("class","productCategory");
-  for (var key in dataCategory) {
-      goodsList.append(createItem(dataCategory[key]));
-  }
-  return goodsList;
+    let goodsList = document.createElement("div");
+    goodsList.setAttribute("class","productCategory");
+    for (var key in dataCategory) {
+        goodsList.append(createItem(dataCategory[key]));
+    }
+    return goodsList;
 
 }
 
@@ -351,7 +412,7 @@ const createProductInCart = id => {
     colDeleteButton.append(deleteButton);
 
     productString.append(colNameOfProduct, colPrice, colNumberOfGoods,
-                        colTotalPrice, colDeleteButton);
+        colTotalPrice, colDeleteButton);
 
     document.getElementById('table_view').append(productString);
 }
@@ -488,7 +549,7 @@ const modalCloseOnClick = event => {
 
 let	mClose	= document.querySelectorAll('[data-close]');
 [].forEach.call(mClose, function(el) {
-		el.addEventListener('click', modalCloseOnClick);
+    el.addEventListener('click', modalCloseOnClick);
 });
 
 document.addEventListener('keydown', modalCloseOnClick);
@@ -553,7 +614,7 @@ function bigramSearchGoods (searchResults, searchAdditionalResults, dataGoods) {
         for (var key in dataCategory) {
             let goodName = dataCategory[key]["name_of_product"];
             if (searchInput === goodName)
-            searchResults[key] = dataCategory[key];
+                searchResults[key] = dataCategory[key];
         }
     }
 }

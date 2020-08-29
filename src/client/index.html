@@ -10,375 +10,378 @@
 </head>
 
 <body>
-    <!-- Шапка -->
-    <header сlass="header">
-        <div class="header_container">
-            <div class="header_logo">Games Store</div>
-            <form class="header_search" id="header_search">
-                <div class="header_search_input_wrapper">
-                    <input class="header_search_input" id="header_search_input" type="text" required placeholder="Поиск по сайту"/>
-                </div>
-                <div class="header_search_dropdown">
-                    <div data_select class="header_select">
-                        <div data_select_title class="header_select_title">Категория</div>
-                        <div class="header_select_dropdown hidden">
-                            <div data_select_item="Playstation" class="header_select_dropdown_item">Playstation</div>
-                            <div data_select_item="Nintendo Switch" class="header_select_dropdown_item">Nintendo Switch</div>
-                            <div data_select_item="Xbox" class="header_select_dropdown_item">Xbox</div>
-                        </div>
+<!-- Шапка -->
+<header сlass="header">
+    <div class="header_container">
+        <div class="header_logo">Games Store</div>
+        <form class="header_search" id="header_search">
+            <div class="header_search_input_wrapper">
+                <input class="header_search_input" id="header_search_input" type="text" required placeholder="Поиск по сайту"/>
+            </div>
+            <div class="header_search_dropdown">
+                <div data_select class="header_select">
+                    <div data_select_title class="header_select_title">Категория</div>
+                    <div class="header_select_dropdown hidden">
+                        <div data_select_item="Playstation" class="header_select_dropdown_item">Playstation</div>
+                        <div data_select_item="Nintendo Switch" class="header_select_dropdown_item">Nintendo Switch</div>
+                        <div data_select_item="Xbox" class="header_select_dropdown_item">Xbox</div>
                     </div>
                 </div>
-                <div class="header_search_button_wrapper">
-                    <button class="header_search_button" type="submit" id="header_search_button">
-                        <img src="img/icons/search-icon.png" alt="">
-                    </button>
+            </div>
+            <div class="header_search_button_wrapper">
+                <button class="header_search_button" type="submit" id="header_search_button">
+                    <img src="img/icons/search-icon.png" alt="">
+                </button>
+            </div>
+        </form>
+        <div class="header_telephone">+7(912) 345-67-89</div>
+    </div>
+</header>
+<!-- Главная часть -->
+<main>
+    <div class="main__nav">
+        <div class="main_nav" id="main_nav">
+            <input type="radio" name="tabs" id="tab-nav-1" checked>
+            <label for="tab-nav-1">
+                <div class="tab-nav-1-container">Playstation</div>
+            </label>
+            <input type="radio" name="tabs" id="tab-nav-2">
+            <label for="tab-nav-2">
+                <div class="tab-nav-2-container">Nintendo Switch</div>
+            </label>
+            <input type="radio" name="tabs" id="tab-nav-3">
+            <label for="tab-nav-3">
+                <div class="tab-nav-3-container">Xbox</div>
+            </label>
+            <input type="radio" name="tabs" id="tab-nav-4">
+            <label for="tab-nav-4">
+                <div class="tab-nav-4-container">
+                    <div class="basket-tab">Корзина </div>
+                    <img src="img/icons/basket-icon.png">
+                    <div id="basketPurchases" class="basket-tab"></div>
                 </div>
-            </form>
-            <div class="header_telephone">+7(912) 345-67-89</div>
-        </div>
-    </header>
-    <!-- Главная часть -->
-    <main>
-        <div class="main__nav">
-            <div class="main_nav" id="main_nav">
-                <input type="radio" name="tabs" id="tab-nav-1" checked>
-                <label for="tab-nav-1">
-                    <div class="tab-nav-1-container">Playstation</div>
-                </label>
-                <input type="radio" name="tabs" id="tab-nav-2">
-                <label for="tab-nav-2">
-                    <div class="tab-nav-2-container">Nintendo Switch</div>
-                </label>
-                <input type="radio" name="tabs" id="tab-nav-3">
-                <label for="tab-nav-3">
-                    <div class="tab-nav-3-container">Xbox</div>
-                </label>
-                <input type="radio" name="tabs" id="tab-nav-4">
-               <label for="tab-nav-4">
-                    <div class="tab-nav-4-container">
-                    	<div class="basket-tab">Корзина </div>
-                    	<img src="img/icons/basket-icon.png">
-                      <div id="basketPurchases" class="basket-tab"></div>
-                    </div>
-                </label>
-                <input type="radio" name="tabs" id="tab-nav-5">
-                <div class="tabs">
-                    <div id="tab-1">
-                    </div>
-                    <div id="tab-2">
-                    </div>
-                    <div id="tab-3">
-                    </div>
-                    <div id="tab-4">
-                        <div class="basket">
-                            <form id="feedback_form" class="feedback_form">
-                                <span class="form-caption">Контактный телефон<span class="red">*</span></span>
+            </label>
+            <input type="radio" name="tabs" id="tab-nav-5">
+            <div class="tabs">
+                <div id="tab-1">
+                </div>
+                <div id="tab-2">
+                </div>
+                <div id="tab-3">
+                </div>
+                <div id="tab-4">
+                    <div class="basket">
+                        <form id="feedback_form" class="feedback_form">
+                            <span class="form-caption">Контактный телефон<span class="red">*</span></span>
+                            <p>
+                                <input type="text" name="telephone" required class="feedback_input" id="telephone">
+                            </p>
+                            <span class="form-caption">Адрес<span class="red">*</span></span>
+                            <p>
+                                <input type="text" name="address" required class="feedback_input" id="address">
+                            </p>
+                            <span class="form-caption">Способ доставки</span>
+                            <div class="delivery" name="delivery">
                                 <p>
-                                    <input type="text" name="telephone" required class="feedback_input" id="telephone">
-                                </p>
-                                <span class="form-caption">Адрес<span class="red">*</span></span>
-                                <p>
-                                    <input type="text" name="address" required class="feedback_input" id="address">
-                                </p>
-                                <span class="form-caption">Способ доставки</span>
-                                <div class="delivery" name="delivery">
-                                    <p>
-                                        <input id="del-1" name="del" value="del-1" type="radio" checked class="radio-button">
-                                        Самовывоз (г. Москва)
-                                        </input>
-                                    </p>
-                                    <p>
-                                        <input id="del-2" name="del" value="del-2" type="radio" class="radio-button">
-                                        Доставка СДЭК
-                                        </input>
-                                    </p>
-                                    <p>
-                                        <input id="del-3" name="del" value="del-3" type="radio" class="radio-button">
-                                        Доставка ЕМС
-                                        </input>
-                                    </p>
-                                    <p>
-                                        <input id="del-4" class="radio-button" name="del" value="del-4" type="radio">
-                                        Доставка Почтой России
-                                        </input>
-                                    </p>
-                                    <p>
-                                        <input id="del-5" name="del" value="del-5" type="radio">
-                                        Доставка курьером (г. Москва)
-                                        </input>
-                                    </p>
-                                </div>
-                                <p>
-                                    <textarea type="comment" name="comment" placeholder="Комментарии к заказу" class="comment" id="comment"></textarea>
-                                </p>
-                                <span class="form-caption">Покупатель</span>
-                                <p>
-                                    <input type="text" name="contact_person" required placeholder="Контактное лицо(ФИО)*" class="feedback_input" id="contact_person">
+                                    <input id="del-1" name="del" value="del-1" type="radio" checked class="radio-button">
+                                    Самовывоз (г. Москва)
+                                    </input>
                                 </p>
                                 <p>
-                                    <input type="text" name="email" placeholder="E-mail" class="feedback_input" id="email">
+                                    <input id="del-2" name="del" value="del-2" type="radio" class="radio-button">
+                                    Доставка СДЭК
+                                    </input>
                                 </p>
-                                <span class="form-caption">Способ оплаты<span class="red">*</span></span>
-                                <div class="delivery" name="payment">
-                                    <p>
-                                        <input name="pay" value="pay-1" type="radio" checked>
-                                        Наличными курьеру
-                                    </p>
-                                </div>
                                 <p>
-                                    <button type="submit" class="button-submit" action="/order-confirmed" method="post">Подтвердить заказ</button>
+                                    <input id="del-3" name="del" value="del-3" type="radio" class="radio-button">
+                                    Доставка ЕМС
+                                    </input>
                                 </p>
-                            </form>
-                            <div class="basket_contents">
-                                <span class="form-caption list_of_products center">Список товаров</span>
-                                <div class="empty_cart" id="empty_cart">Ваша корзина пуста!</div>
-                                <table id="table_view">
-                                    <tr>
-                                        <th>Наименование</th>
-                                        <th>Цена, руб</th>
-                                        <th>Кол-во, шт</th>
-                                        <th>Стоимость, руб</th>
-                                        <th> </th>
-                                    </tr>
-                                </table>
-                                <div class="total" id="total">ИТОГО:
-                                    <span class="total_num" id="total_num"></span>
-                                </div>
-                                <button class="button_clean_cart button-submit" id="clean_cart">Очистить корзину</button>
+                                <p>
+                                    <input id="del-4" class="radio-button" name="del" value="del-4" type="radio">
+                                    Доставка Почтой России
+                                    </input>
+                                </p>
+                                <p>
+                                    <input id="del-5" name="del" value="del-5" type="radio">
+                                    Доставка курьером (г. Москва)
+                                    </input>
+                                </p>
                             </div>
+                            <p>
+                                <textarea type="comment" name="comment" placeholder="Комментарии к заказу" class="comment" id="comment"></textarea>
+                            </p>
+                            <span class="form-caption">Покупатель</span>
+                            <p>
+                                <input type="text" name="contact_person" required placeholder="Контактное лицо(ФИО)*" class="feedback_input" id="contact_person">
+                            </p>
+                            <p>
+                                <input type="text" name="email" placeholder="E-mail" class="feedback_input" id="email">
+                            </p>
+                            <span class="form-caption">Способ оплаты<span class="red">*</span></span>
+                            <div class="delivery" name="payment">
+                                <p>
+                                    <input name="pay" value="pay-1" type="radio" checked>
+                                    Наличными курьеру
+                                </p>
+                            </div>
+                            <p>
+                                <button type="submit" class="button-submit" action="/order-confirmed" method="post">Подтвердить заказ</button>
+                            </p>
+                        </form>
+                        <div class="basket_contents">
+                            <span class="form-caption list_of_products center">Список товаров</span>
+                            <div class="empty_cart" id="empty_cart">Ваша корзина пуста!</div>
+                            <table id="table_view">
+                                <tr>
+                                    <th>Наименование</th>
+                                    <th>Цена, руб</th>
+                                    <th>Кол-во, шт</th>
+                                    <th>Стоимость, руб</th>
+                                    <th> </th>
+                                </tr>
+                            </table>
+                            <div class="total" id="total">ИТОГО:
+                                <span class="total_num" id="total_num"></span>
+                            </div>
+                            <button class="button_clean_cart button-submit" id="clean_cart">Очистить корзину</button>
                         </div>
                     </div>
-                    <div id="tab-5">
-                    </div>
                 </div>
-            </div>
-        </div>
-    </main>
-    <!-- Модальные окна -->
-    <div class="modal_overlay" data-close=""></div>
-    <div id="modal_notice" class="dlg_modal">
-        <!--<span class="closer" data-close=""></span>-->
-        <span id="modal_notice_text" class="modal_text"></span>
-        <button class="button_modal_cancel" data-close="">Закрыть</button>
-    </div>
-    <div id="modal_confirmation" class="dlg_modal">
-        <span class="modal_text">Очистить корзину?</span>
-        <button class="button_modal_cancel button_modal_yes">Да</button>
-        <button class="button_modal_cancel button_modal_no">Нет</button>
-    </div>
-    <!--  Инфо о компании  -->
-    <div class="info_about_company center">
-        <div class="info_title">
-            О нас
-        </div>
-        <div class="container">
-            <div class="row container_mini">
-                <div class="info_container_img info_container_img_left">
-                    <div class="info_img">
-                        <img src="img/icons/cash-icon.png" alt="cash" />
-                    </div>
-                    <div class="info_img_text">
-                        гарантия цены и качества
-                    </div>
-                </div>
-                <div class="info_container">
-                    Интернет-магазин Games Store - крупнейший спeциализиpованный
-                    игpовoй магазин, пpeдлaгающий игрoвые пpиcтaвки с гарантиeй по низкой цене в наличии.
-                </div>
-            </div>
-            <div class="row container_mini">
-                <div class="info_container">
-                    В разделах нашего интернет-магазина Вашему вниманию представлен
-                    самый широкий ассортимент продукции таких торговых марок,
-                    как Playstation, Nintendo Switch и Xbox.
-                </div>
-                <div class="info_container_img">
-                    <div class="info_img">
-                        <img src="img/icons/joystick-icon.png" alt="joystick" />
-                    </div>
-                    <div class="info_img_text">
-                        широкий ассортимент
-                    </div>
-                </div>
-            </div>
-            <div class="row container_mini">
-                <div class="info_container_img info_container_img_left">
-                    <div class="info_img">
-                        <img src="img/icons/garanty-icon.png" alt="garanty" />
-                    </div>
-                    <div class="info_img_text">
-                        точность и надежность
-                    </div>
-                </div>
-                <div class="info_container">
-                    Мы следим за актуальностью опубликованной на сайте информации,
-                    поэтому можем гарантировать, что приобретаемая вами продукция
-                    соответствует заявленным характеристикам.
-                </div>
-            </div>
-            <div class="row container_mini">
-                <div class="info_container">
-                    В интернет-магазине "Games Store" предусмотрены послепродажное
-                    обслуживание, а также система лояльности для будущих покупок.
-                </div>
-                <div class="info_container_img">
-                    <div class="info_img">
-                        <img src="img/icons/support-icon.png" alt="support" />
-                    </div>
-                    <div class="info_img_text">
-                        сервис и обслуживание
-                    </div>
+                <div id="tab-5">
                 </div>
             </div>
         </div>
     </div>
-    <!--  Отзывы  -->
-    <div class="responses center">
-        <div class="responses_title">
-            Отзывы
-        </div>
-        <div class="responses_title_bottom">
-            *отзывы взяты с Авито
-        </div>
-        <div class="wrapper center">
-            <input type="radio" name="point" id="slide1" checked>
-            <input type="radio" name="point" id="slide2">
-            <input type="radio" name="point" id="slide3">
-            <input type="radio" name="point" id="slide4">
-            <input type="radio" name="point" id="slide5">
-            <div class="slider center">
-                <div class="slides slide1">
-                    <div class="response_container">
-                        <div class="response_item_name">
-                            Альберт
-                        </div>
-                        <div class="response_item_text">
-                            Покупкой очень доволен. Продавец отзывчивый.
-                            Полностью ответил на все мои вопросы, показал
-                            и рассказал как работать с прошивкой приставки.
-                            Сама Nintendo Switch превзошла все мои ожидания.
-                            Спасибо большое!
-                        </div>
-                    </div>
+</main>
+<!-- Модальные окна -->
+<div class="modal_overlay" data-close=""></div>
+<div id="modal_notice" class="dlg_modal">
+    <span id="modal_notice_text" class="modal_text"></span>
+    <button class="button_modal_cancel" data-close="">Закрыть</button>
+</div>
+<div id="modal_confirmation" class="dlg_modal">
+    <span class="modal_text">Очистить корзину?</span>
+    <button class="button_modal_cancel button_modal_yes">Да</button>
+    <button class="button_modal_cancel button_modal_no">Нет</button>
+</div>
+<div id="myModal" class="modal">
+    <div class="modalContent" id="modalContent">
+        <span class="close">&times;</span>
+        <div class="imgProduct" id="imgProduct"></div>
+    </div>
+</div>
+<!--  Инфо о компании  -->
+<div class="info_about_company center">
+    <div class="info_title">
+        О нас
+    </div>
+    <div class="container">
+        <div class="row container_mini">
+            <div class="info_container_img info_container_img_left">
+                <div class="info_img">
+                    <img src="img/icons/cash-icon.png" alt="cash" />
                 </div>
-                <div class="slides slide2">
-                    <div class="response_container">
-                        <div class="response_item_name">
-                            Герман
-                        </div>
-                        <div class="response_item_text">
-                            Приятный в общении продавец. На месте
-                            сразу установил игры, которые я попросил,
-                            рассказал и показал как пользоваться.
-                            Сама приставка в хорошем состоянии. На выбор
-                            разные цвета Joy-Con’ов, в наличии имеется
-                            еще достаточное количество консолей.
-                        </div>
-                    </div>
-                </div>
-                <div class="slides slide3">
-                    <div class="response_container">
-                        <div class="response_item_name">
-                            Александр
-                        </div>
-                        <div class="response_item_text">
-                            Все четко, покупал комплект на 160гб за 27к.
-                            Продавец все подробно рассказал, объяснил по поводу
-                            особенностей прошивки «что можно, что нельзя, как нужно»
-                            Приставка в идеальном состоянии, царапин и потертостей
-                            нет, не тормозит, джойконы не прыгают. Пообещал поддержку
-                            после покупки - можно обращаться по всем вопросам. Доволен 10/10
-                        </div>
-                    </div>
-                </div>
-                <div class="slides slide4">
-                    <div class="response_container">
-                        <div class="response_item_name">
-                            Ольга
-                        </div>
-                        <div class="response_item_text">
-                            Продавец отличный: отвечает быстро,
-                            все подробно объясняет и очень приветливый.
-                            Брали консоль 128гб, все работает + продавец поддерживает
-                            дополнительно, если появляются какие-либо вопросы.
-                            Все очень понравилось, рекомендую!
-                        </div>
-                    </div>
-                </div>
-                <div class="slides slide5">
-                    <div class="response_container">
-                        <div class="response_item_name">
-                            Андрей
-                        </div>
-                        <div class="response_item_text">
-                            Заказ делал из Волгограда. Все было отправлено
-                            оперативно на следующий день. Немного подкачала
-                            почта России, но это претензии к ней. Приставка работает нормально.
-                            Если возникает необходимость консультации по ее работе,
-                            продавец через WhatsApp и голосовую связь информирует
-                            незамедлительно. Покупкой доволен. Все бы продавцы были бы такие. Спасибо.
-                        </div>
-                    </div>
+                <div class="info_img_text">
+                    гарантия цены и качества
                 </div>
             </div>
-            <div class="controls">
-                <label for="slide1"></label>
-                <label for="slide2"></label>
-                <label for="slide3"></label>
-                <label for="slide4"></label>
-                <label for="slide5"></label>
+            <div class="info_container">
+                Интернет-магазин Games Store - крупнейший спeциализиpованный
+                игpовoй магазин, пpeдлaгающий игрoвые пpиcтaвки с гарантиeй по низкой цене в наличии.
+            </div>
+        </div>
+        <div class="row container_mini">
+            <div class="info_container">
+                В разделах нашего интернет-магазина Вашему вниманию представлен
+                самый широкий ассортимент продукции таких торговых марок,
+                как Playstation, Nintendo Switch и Xbox.
+            </div>
+            <div class="info_container_img">
+                <div class="info_img">
+                    <img src="img/icons/joystick-icon.png" alt="joystick" />
+                </div>
+                <div class="info_img_text">
+                    широкий ассортимент
+                </div>
+            </div>
+        </div>
+        <div class="row container_mini">
+            <div class="info_container_img info_container_img_left">
+                <div class="info_img">
+                    <img src="img/icons/garanty-icon.png" alt="garanty" />
+                </div>
+                <div class="info_img_text">
+                    точность и надежность
+                </div>
+            </div>
+            <div class="info_container">
+                Мы следим за актуальностью опубликованной на сайте информации,
+                поэтому можем гарантировать, что приобретаемая вами продукция
+                соответствует заявленным характеристикам.
+            </div>
+        </div>
+        <div class="row container_mini">
+            <div class="info_container">
+                В интернет-магазине "Games Store" предусмотрены послепродажное
+                обслуживание, а также система лояльности для будущих покупок.
+            </div>
+            <div class="info_container_img">
+                <div class="info_img">
+                    <img src="img/icons/support-icon.png" alt="support" />
+                </div>
+                <div class="info_img_text">
+                    сервис и обслуживание
+                </div>
             </div>
         </div>
     </div>
-    <!--  Подвал  -->
-    <footer class="center">
-        <div class="row container">
-            <div class="column">
-                <div class="company_name">
-                    Games Store
-                </div>
-                <div class="company_name_text">
-                    Игровые приставки, игры, аксессуары.
-                </div>
-            </div>
-            <div class="column">
-                <div class="contacts">
-                    Контакты:
-                </div>
-                <div class="row">
-                    <div class="contacts_img">
-                        <img src="img/icons/mail-icon.png" alt="mail" />
+</div>
+<!--  Отзывы  -->
+<div class="responses center">
+    <div class="responses_title">
+        Отзывы
+    </div>
+    <div class="responses_title_bottom"></div>
+    <div class="wrapper center">
+        <input type="radio" name="point" id="slide1" checked>
+        <input type="radio" name="point" id="slide2">
+        <input type="radio" name="point" id="slide3">
+        <input type="radio" name="point" id="slide4">
+        <input type="radio" name="point" id="slide5">
+        <div class="slider center">
+            <div class="slides slide1">
+                <div class="response_container">
+                    <div class="response_item_name">
+                        Альберт
                     </div>
-                    <div class="contacts_img contacts_text">
-                        post@gmail.com
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="contacts_img">
-                        <img src="img/icons/phone-icon.png" alt="phone" />
-                    </div>
-                    <div class="contacts_img contacts_text">
-                        +7 (912) 345-67-89
+                    <div class="response_item_text">
+                        Покупкой очень доволен. Продавец отзывчивый.
+                        Полностью ответил на все мои вопросы, показал
+                        и рассказал как работать с прошивкой приставки.
+                        Сама Nintendo Switch превзошла все мои ожидания.
+                        Спасибо большое!
                     </div>
                 </div>
             </div>
-            <div class="column">
-                <div class="row">
-                    <div class="contacts_img icon_product">
-                        <img src="img/icons/nintendo-icon.png" alt="nintendo" />
+            <div class="slides slide2">
+                <div class="response_container">
+                    <div class="response_item_name">
+                        Герман
                     </div>
-                    <div class="contacts_img icon_product">
-                        <img src="img/icons/playstation-icon.png" alt="playstation" />
+                    <div class="response_item_text">
+                        Приятный в общении продавец. На месте
+                        сразу установил игры, которые я попросил,
+                        рассказал и показал как пользоваться.
+                        Сама приставка в хорошем состоянии. На выбор
+                        разные цвета Joy-Con’ов, в наличии имеется
+                        еще достаточное количество консолей.
                     </div>
-                    <div class="contacts_img icon_product">
-                        <img src="img/icons/xbox-icon.png" alt="xbox" />
+                </div>
+            </div>
+            <div class="slides slide3">
+                <div class="response_container">
+                    <div class="response_item_name">
+                        Александр
+                    </div>
+                    <div class="response_item_text">
+                        Все четко, покупал комплект на 160гб за 27к.
+                        Продавец все подробно рассказал, объяснил по поводу
+                        особенностей прошивки «что можно, что нельзя, как нужно»
+                        Приставка в идеальном состоянии, царапин и потертостей
+                        нет, не тормозит, джойконы не прыгают. Пообещал поддержку
+                        после покупки - можно обращаться по всем вопросам. Доволен 10/10
+                    </div>
+                </div>
+            </div>
+            <div class="slides slide4">
+                <div class="response_container">
+                    <div class="response_item_name">
+                        Ольга
+                    </div>
+                    <div class="response_item_text">
+                        Продавец отличный: отвечает быстро,
+                        все подробно объясняет и очень приветливый.
+                        Брали консоль 128гб, все работает + продавец поддерживает
+                        дополнительно, если появляются какие-либо вопросы.
+                        Все очень понравилось, рекомендую!
+                    </div>
+                </div>
+            </div>
+            <div class="slides slide5">
+                <div class="response_container">
+                    <div class="response_item_name">
+                        Андрей
+                    </div>
+                    <div class="response_item_text">
+                        Заказ делал из Волгограда. Все было отправлено
+                        оперативно на следующий день. Немного подкачала
+                        почта России, но это претензии к ней. Приставка работает нормально.
+                        Если возникает необходимость консультации по ее работе,
+                        продавец через WhatsApp и голосовую связь информирует
+                        незамедлительно. Покупкой доволен. Все бы продавцы были бы такие. Спасибо.
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
-    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
-    <script src="main.js"></script>
+        <div class="controls">
+            <label for="slide1"></label>
+            <label for="slide2"></label>
+            <label for="slide3"></label>
+            <label for="slide4"></label>
+            <label for="slide5"></label>
+        </div>
+    </div>
+</div>
+<!--  Подвал  -->
+<footer class="center">
+    <div class="row container">
+        <div class="column">
+            <div class="company_name">
+                Games Store
+            </div>
+            <div class="company_name_text">
+                Игровые приставки, игры, аксессуары.
+            </div>
+        </div>
+        <div class="column">
+            <div class="contacts">
+                Контакты:
+            </div>
+            <div class="row">
+                <div class="contacts_img">
+                    <img src="img/icons/mail-icon.png" alt="mail" />
+                </div>
+                <div class="contacts_img contacts_text">
+                    post@gmail.com
+                </div>
+            </div>
+            <div class="row">
+                <div class="contacts_img">
+                    <img src="img/icons/phone-icon.png" alt="phone" />
+                </div>
+                <div class="contacts_img contacts_text">
+                    +7 (912) 345-67-89
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="row">
+                <div class="contacts_img icon_product">
+                    <img src="img/icons/nintendo-icon.png" alt="nintendo" />
+                </div>
+                <div class="contacts_img icon_product">
+                    <img src="img/icons/playstation-icon.png" alt="playstation" />
+                </div>
+                <div class="contacts_img icon_product">
+                    <img src="img/icons/xbox-icon.png" alt="xbox" />
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+<script src="main.js"></script>
 </body>
 
 </html>
