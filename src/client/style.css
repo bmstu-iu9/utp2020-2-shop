@@ -584,6 +584,7 @@ th {
 }
 
 .button_clean_cart {
+    visibility: hidden;
     margin-top: 20px;
     background-color: #54b8ff;
 }
