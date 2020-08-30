@@ -340,6 +340,7 @@ main {
 .informationButton {
     background: none;
     border: none;
+    cursor: pointer;
 }
 
 .availabilityIcon {
