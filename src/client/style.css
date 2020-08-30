@@ -337,6 +337,11 @@ main {
     font-size: 20px;
 }
 
+.informationButton {
+    background: none;
+    border: none;
+}
+
 .availabilityIcon {
     display: inline-block;
 }
