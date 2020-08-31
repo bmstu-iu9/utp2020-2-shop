@@ -32,8 +32,9 @@ const saveChanges = () => {
 const selectCompanyName = () => {
     let correctCompanyName;
     do {
+        console.log("\nВыберите компанию:");
         let companyName = readline.question(
-            "\n0. Вернуться назад\n" +
+            "0. Вернуться назад\n" +
             "1. Playstation\n" +
             "2. Nintendo Switch\n" +
             "3. Xbox\n" +
@@ -64,8 +65,9 @@ const selectCompanyName = () => {
 const selectCategory = () => {
     let correctCategory;
     do {
+        console.log("\nВыберите категорию:");
         let category = readline.question(
-            "\n0. Вернуться назад\n" +
+            "0. Вернуться назад\n" +
             "1. Игровые приставки\n" +
             "2. Игры\n" +
             "3. Аксессуары\n" +
@@ -336,7 +338,7 @@ const deleteItem = () => {
         let primaryAction = readline.question(
             "\n1. Посмотреть информацию о товаре\n" +
             "2. Изменить товар\n" + 
-            "3. Добавть товар\n" + 
+            "3. Добавить товар\n" + 
             "4. Удалить товар\n" +
             "5. Завершить выполнение программы\n" +
             "Номер команды: ");
