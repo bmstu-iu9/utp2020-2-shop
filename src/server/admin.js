@@ -100,7 +100,8 @@ const showOneItem = (numberOfCategory, id) => {
                    "\nНазвание: " + jsonFile[numberOfCategory][id]["name_of_product"] +
                    "\nЦена: " + jsonFile[numberOfCategory][id]["price"] + 
                    "\nКоличество на складе: " + jsonFile[numberOfCategory][id]["count_of_product"] +
-                   "\nПуть к изображению: " + jsonFile[numberOfCategory][id]["url"]);
+                   "\nПуть к изображению: " + jsonFile[numberOfCategory][id]["url"] +
+                   "\nОписание: " + jsonFile[numberOfCategory][id]["description"]);
 }
 
 const showItems = () => {
@@ -129,12 +130,17 @@ const showItems = () => {
 }
 
 const changeItem = () => {
+    console.log("\nЧтобы изменить товар, необходимо выбрать его производителя и категорию.");
     let numberOfCategory = showItems();
     if (numberOfCategory === -1 || Object.keys(jsonFile[numberOfCategory]).length === 0) {
         return;
     }
     
     let idOfItem = readline.question("\nВведите из списка ID товара, который хотите изменить: ");
+    if (typeof jsonFile[numberOfCategory][idOfItem] === "undefined") {
+        console.log("Товара с данным ID не существует или он находится в другой категории.");
+        return;
+    }
     
     do {
         console.log("\nID изменяемого товара: " + idOfItem);
@@ -142,8 +148,9 @@ const changeItem = () => {
                 "1. Изменить цену\n" + 
                 "2. Изменить количество на складе\n" + 
                 "3. Изменить изображение\n" +
-                "4. Сохранить все изменения\n" +
-                "5. Отменить все несохраненные изменения\n" +
+                "4. Изменить описание\n" +
+                "5. Сохранить все изменения\n" +
+                "6. Отменить все несохраненные изменения\n" +
                 "Номер команды: ");
         
         switch (changeAction) {
@@ -169,9 +176,15 @@ const changeItem = () => {
                 showOneItem(numberOfCategory, idOfItem);
                 break;
             case "4":
-                saveChanges();
+                console.log("Чтобы сделать пернос строки в описании товара, введите <br> в необходимом месте.");
+                jsonFile[numberOfCategory][idOfItem]["description"] =
+                    readline.question("\nВведите описание: ");
+                showOneItem(numberOfCategory, idOfItem);
                 break;
             case "5":
+                saveChanges();
+                break;
+            case "6":
                 getJSON();
                 break;
             default:
@@ -258,6 +271,8 @@ const addItem = () => {
     newItem["name_of_product"] = readline.question("Введите название товара: ");
     newItem["price"] = Number(readline.question("Введите цену товара: "));
     newItem["count_of_product"] = Number(readline.question("Введите количество товара на складе: "));
+    console.log("Чтобы сделать пернос строки в описании товара, введите <br> в необходимом месте.");
+    newItem["description"] = readline.question("Введите описание товара: ");
     
     switch(newItem["count_of_product"]) {
         case 0: 
@@ -299,12 +314,17 @@ const addItem = () => {
 
 const deleteItem = () => {
     let correctDeleteResponse;
+    console.log("\nЧтобы удалить товар, необходимо выбрать его производителя и категорию.");
     let numberOfCategory = showItems();
     if (numberOfCategory === -1 || Object.keys(jsonFile[numberOfCategory]).length === 0) {
         return;
     }
     
     let idOfItem = readline.question("\nВведите из списка ID товара, который хотите удалить: ");
+    if (typeof jsonFile[numberOfCategory][idOfItem] === "undefined") {
+        console.log("Товара с данным ID не существует или он находится в другой категории.");
+        return;
+    }
     
     do {
         console.log("\nВы уверены, что хотите удалить товар?");
