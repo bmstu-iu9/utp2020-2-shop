@@ -358,6 +358,8 @@ function showGoods(dataGoods) {
             }
         }
     }
+
+    sectionLengthChange ('tab-1');
 }
 
 let total = 0;
@@ -656,6 +658,12 @@ function searchAndShowGoods (dataGoods) {
         searchTab.append(getListContent(searchAdditionalResults));
     }
 
+}
+
+function sectionLengthChange (id) {
+    let tabsContainer = document.getElementById("main");
+    let activeTab =  document.getElementById(id);
+    tabsContainer.style.height = activeTab.offsetHeight + 60 + "px";
 }
 
 function status (response) {
