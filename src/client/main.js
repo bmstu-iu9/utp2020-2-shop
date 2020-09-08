@@ -36,6 +36,7 @@ if (feedback_form_el) {
 
 let cart = new Map();
 let pathToJsonWithGoods = "./../res/db.json";
+let tabsHeight = [];
 
 function submitForm(e) {
     if (cart.size === 0) {
@@ -358,6 +359,14 @@ function showGoods(dataGoods) {
             }
         }
     }
+
+    for (let i = 1; i < 5; i++){
+        let tabId = 'tab-' + i;
+        let tab = document.getElementById(tabId);
+        tabsHeight.push (tab.offsetHeight);
+    }
+
+    sectionLengthChange (1);
 }
 
 let total = 0;
@@ -656,6 +665,28 @@ function searchAndShowGoods (dataGoods) {
         searchTab.append(getListContent(searchAdditionalResults));
     }
 
+    let tab = document.getElementById(id);
+    tabsHeight.push (tab.offsetHeight);
+    tabsHeight[4] = 550;
+
+    sectionLengthChange (5);
+}
+
+function sectionLengthChange (idNumber) {
+    let tabsContainer = document.getElementById("main");
+    tabsContainer.style.height = tabsHeight[idNumber - 1] + 60 + "px";
+
+    for (let i = 1; i < 6; i++) {
+        let tabId = 'tab-' + i;
+        let tab = document.getElementById(tabId);
+        if (idNumber !== i) {
+            tab.style.overflow = "hidden";
+            tab.style.height = 0;
+        }
+        else {
+            tab.style.overflow = "visible";
+        }
+    }
 }
 
 function status (response) {

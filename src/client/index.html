@@ -39,22 +39,22 @@
     </div>
 </header>
 <!-- Главная часть -->
-<main>
+<main id="main">
     <div class="main__nav">
         <div class="main_nav" id="main_nav">
-            <input type="radio" name="tabs" id="tab-nav-1" checked>
+            <input type="radio" name="tabs" id="tab-nav-1" checked onclick="sectionLengthChange(1)">
             <label for="tab-nav-1">
                 <div class="tab-nav-1-container">Playstation</div>
             </label>
-            <input type="radio" name="tabs" id="tab-nav-2">
+            <input type="radio" name="tabs" id="tab-nav-2" onclick="sectionLengthChange(2)">
             <label for="tab-nav-2">
                 <div class="tab-nav-2-container">Nintendo Switch</div>
             </label>
-            <input type="radio" name="tabs" id="tab-nav-3">
+            <input type="radio" name="tabs" id="tab-nav-3" onclick="sectionLengthChange(3)">
             <label for="tab-nav-3">
                 <div class="tab-nav-3-container">Xbox</div>
             </label>
-            <input type="radio" name="tabs" id="tab-nav-4">
+            <input type="radio" name="tabs" id="tab-nav-4" onclick="sectionLengthChange(4)">
             <label for="tab-nav-4">
                 <div class="tab-nav-4-container">
                     <div class="basket-tab">Корзина </div>
@@ -150,6 +150,7 @@
                     </div>
                 </div>
                 <div id="tab-5">
+                    <div id="tab-5-inner"></div>
                 </div>
             </div>
         </div>
