@@ -689,6 +689,12 @@ function sectionLengthChange (idNumber) {
     }
 }
 
+function sectionLengthChange (id) {
+    let tabsContainer = document.getElementById("main");
+    let activeTab =  document.getElementById(id);
+    tabsContainer.style.height = activeTab.offsetHeight + 60 + "px";
+}
+
 function status (response) {
     if (response.status !== 200) {
         return Promise.reject(new Error(response.statusText))
