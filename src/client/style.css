@@ -395,7 +395,7 @@ main {
 
 .form-caption {
     font-size: 24px;
-    margin-bottom: 0 auto;
+    margin-bottom: 0;
 }
 
 .red {
@@ -406,7 +406,7 @@ main {
     width: 345px;
     height: 41px;
     padding: 10px;
-    margin-top: 0 auto;
+    margin-top: 0;
     background-color: #F1EFEF;
     border: 2px solid #eee;
     border-radius: 7px;
