@@ -651,7 +651,7 @@ th {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 73vh;
+    height: 730px;
 }
 
 .info_title {
@@ -837,7 +837,7 @@ th {
 
 footer {
     width: 100%;
-    height: 30vh;
+    height: 300px;
     background-color: #2F2F30;
     color: white;
     margin-left: auto;
