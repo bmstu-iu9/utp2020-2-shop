@@ -1,0 +1,121 @@
+.basket {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+}
+
+.feedback_form {
+    width: 40%;
+    font-weight: 200;
+    margin-top: 30px;
+    min-width: 350px;
+}
+
+.form-caption {
+    font-size: 24px;
+    margin-bottom: 0;
+}
+
+.red {
+    color: #F42727;
+}
+
+.feedback_input {
+    width: 345px;
+    height: 41px;
+    padding: 10px;
+    margin-top: 0;
+    background-color: #F1EFEF;
+    border: 2px solid #eee;
+    border-radius: 7px;
+    box-shadow: 0px 3px 2px 0px #ada8a8;
+    font-size: 18px;
+}
+
+.comment {
+    resize: vertical;
+    width: 345px;
+    padding-left: 10px;
+    margin-top: 30px;
+    background-color: #F1EFEF;
+    border: 2px solid #eee;
+    border-radius: 7px;
+    box-shadow: 0px 3px 2px 0px #ada8a8;
+    font-size: 18px;
+}
+
+textarea[type="comment"]::-webkit-input-placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+textarea[type="comment"]:-ms-input-placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+textarea[type="comment"]::-ms-input-placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+textarea[type="comment"]::placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+input[type="text"]::-webkit-input-placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+textarea[type="text"]:-ms-input-placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+textarea[type="text"]::-ms-input-placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+textarea[type="text"]::placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.button-submit {
+    margin-top: 10px;
+    width: 250px;
+    height: 41px;
+    border: 0px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 2px 0px #ada8a8;
+    background-color: #2764F4;
+    font-size: 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.button-submit:hover {
+    background-color: #0f54f5;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.42);
+}
+
+.radio-button:disabled:before {
+    width: 100px;
+    background-color: #C4C4C4;
+}
+
+.delivery-comment {
+    padding-left: 24px;
+    font-size: 15px;
+}
+
+.delivery {
+    width: 345px;
+    font-size: 20px;
+    line-height: 0.6;
+    margin-top: 20px;
+    margin-left: 10px;
+}

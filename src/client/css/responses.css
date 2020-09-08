@@ -1,0 +1,47 @@
+.responses {
+    height: 500px;
+}
+
+.response_container {
+    background-color: #FFFFFF;
+    box-shadow: 0 0 5px 2px;
+    border-radius: 25px;
+
+    height: 270px;
+    width: 700px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 70px;
+}
+
+.responses_title {
+    font-weight: 300;
+    width: 900px;
+    margin: 0 auto;
+    border-bottom: 2px solid #000;
+    font-size: 46px;
+    text-align: center;
+    line-height: 2;
+}
+
+.responses_title_bottom {
+    font-weight: 300;
+    margin-left: -720px;
+    margin-bottom: 40px;
+}
+
+.response_item_name {
+    font-weight: 300;
+    text-align: center;
+    font-size: 30px;
+    line-height: normal;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+
+.response_item_text {
+    font-weight: 300;
+    text-align: center;
+    font-size: 22px;
+    line-height: 1.5;
+}

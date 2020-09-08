@@ -1,0 +1,88 @@
+.modal_overlay {
+    opacity: 0;
+    visibility: hidden;
+    position:fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 110;
+    background: rgba(0,0,0,0.87);
+}
+
+.dlg_modal {
+    width: 576px;
+    height: 300px;
+    opacity: 0;
+    visibility: hidden;
+    text-align: center;
+    position: fixed;
+    left: 50%;
+    top: 180px;
+    z-index: 130;
+    margin-left: -288px;
+    padding: 47px 36px;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.85);
+    filter: alpha(opacity=0);
+}
+
+.modal_text {
+    position: relative;
+    left: 0%;
+    top: 30%;
+    font-size: 25px;
+}
+
+.button_modal_cancel {
+    position: absolute;
+    right: 43%;
+    top: 70%;
+    width: 80px;
+    height: 50px;
+    font-size: 15px;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.button_modal_cancel:hover {
+    background-color: #e5e5e5;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.42);
+}
+
+.button_modal_yes {
+    right: 52%;
+}
+
+.button_modal_no {
+    right: 34%;
+}
+
+.fadeIn, .fadeOut {
+    animation-duration: 0.4s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; visibility: hidden;}
+    to {opacity:1; visibility: visible;}
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+    opacity: 1;
+    visibility: visible;
+}
+
+@keyframes fadeOut {
+    from {opacity: 1; visibility: visible;}
+    to {opacity:0; visibility: hidden;}
+}
+.fadeOut {
+    animation-name: fadeOut;
+    opacity: 0;
+    visibility: hidden;
+}

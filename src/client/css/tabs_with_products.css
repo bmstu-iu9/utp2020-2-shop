@@ -1,0 +1,70 @@
+.categoryName {
+    font-size: 30px;
+    font-weight: 200;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+
+.productCategory {
+    overflow: hidden;
+}
+
+.product {
+    height: 400px;
+    width: 27%;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 5%;
+    float: left;
+    color: #000000;
+    margin: 30px;
+    border: 2px solid #eee;
+    border-radius: 7px;
+    box-shadow: 0px 3px 2px 0px #ada8a8;
+    border-left: 5px;
+}
+
+.productName {
+    font-size: 20px;
+}
+
+.informationButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.availabilityIcon {
+    display: inline-block;
+}
+
+.productStateText {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 15px;
+    font-weight: 200;
+}
+
+.productCost {
+    font-size: 30px;
+    font-weight: 200;
+}
+
+.addPurchase {
+    margin-top: 8px;
+    width: 200px;
+    height: 30px;
+    border: 0px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 2px 0px #ada8a8;
+    background-color: #2764F4;
+    font-size: 18px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.addPurchase:hover {
+    background-color: #0f54f5;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.42);
+}
