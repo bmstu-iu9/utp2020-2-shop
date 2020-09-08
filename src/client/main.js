@@ -666,8 +666,8 @@ function searchAndShowGoods (dataGoods) {
     }
 
     let tab = document.getElementById(id);
-    tabsHeight.push (tab.offsetHeight);
-    tabsHeight[4] = 550;
+    tab.style.height = "auto";
+    tabsHeight[4] = tab.offsetHeight;
 
     sectionLengthChange (5);
 }
@@ -687,12 +687,6 @@ function sectionLengthChange (idNumber) {
             tab.style.overflow = "visible";
         }
     }
-}
-
-function sectionLengthChange (id) {
-    let tabsContainer = document.getElementById("main");
-    let activeTab =  document.getElementById(id);
-    tabsContainer.style.height = activeTab.offsetHeight + 60 + "px";
 }
 
 function status (response) {
