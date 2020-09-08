@@ -1,0 +1,47 @@
+.info_about_company {
+    background-image: url(../../../img/background-info.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 730px;
+}
+
+.info_title {
+    text-align: center;
+    font-size: 46px;
+    font-weight: 300;
+    margin-bottom: 25px;
+}
+
+.info_container {
+    width: 600px;
+    font-size: 20px;
+    font-weight: 300;
+    float: left;
+    margin-top: 15px;
+    padding-left: 10px;
+}
+
+.info_container_img {
+    float: left;
+    background-color: #d6d6d6;
+    margin-top: -20px;
+    width: 130px;
+    height: 130px;
+    border-radius: 25px;
+}
+
+.info_container_img_left {
+    margin-left: 10px;
+}
+
+.info_img {
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.info_img_text {
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px
+}
