@@ -1,141 +1,11 @@
 "use strict"
 
-const selectElement = document.querySelector("[data_select]");
-const selectedSearchCategory = document.querySelector("[data_select_title]");
-
-selectElement.addEventListener("click", function(event) {
-    if (event.target.hasAttribute("data_select_item")) {
-        const itemTitle = event.target.getAttribute("data_select_item");
-        event.target.closest("[data_select]").querySelector("[data_select_title]").textContent = itemTitle;
-        event.target.closest("[data_select]").querySelector(".header_select_dropdown").classList.toggle("hidden");
-    } else {
-        this.querySelector(".header_select_dropdown").classList.toggle("hidden");
-    }
-})
-
-const config = {
-    apiKey: "AIzaSyC3IZYPlLM7MyK2eT4CWQm-lrgqiqTxmiQ",
-    authDomain: "feedback-form-6fbbd.firebaseapp.com",
-    databaseURL: "https://feedback-form-6fbbd.firebaseio.com",
-    projectId: "feedback-form-6fbbd",
-    storageBucket: "feedback-form-6fbbd.appspot.com",
-    messagingSenderId: "708240577694",
-    appId: "1:708240577694:web:69e46bef22623999ed178f",
-    measurementId: "G-CGGRTB89WG"
-};
-
-firebase.initializeApp(config);
-
-let messagesRef = firebase.database().ref('messages');
-
-let feedback_form_el = document.getElementById('feedback_form');
-
-if (feedback_form_el) {
-    feedback_form_el.addEventListener('submit', submitForm);
-}
-
 let cart = new Map();
 let pathToJsonWithGoods = "./../res/db.json";
 let tabsHeight = [];
 
-function submitForm(e) {
-    if (cart.size === 0) {
-        alert("Ваша корзина пуста. Перед отправкой заказа добавьте в корзину хотя бы один товар.");
-        e.preventDefault();
-    } else {
-        alert("Ваша заявка отправлена.");
-        e.preventDefault();
-
-        let data_submit_form = [];
-        let data_of_user = ['telephone', 'address', 'comment', 'contact_person', 'email'];
-        let list_of_del = ['del-1', 'del-2', 'del-3', 'del-4', 'del-5'];
-        let type_of_delivery = ["Самовывоз (г. Москва)", "Доставка СДЭК", "Доставка ЕМС",
-            "Доставка Почтой России", "Доставка курьером (г. Москва)"];
-        let del = [];
-        let delivery;
-        let list_of_products = [];
-        for (let i = 0; i < data_of_user.length; i++) {
-            data_submit_form.push(getInputVal(data_of_user[i]));
-        }
-        for (let i = 0; i < list_of_del.length; i++) {
-            del.push(document.getElementById(list_of_del[i]));
-        }
-        for (let i = 0; i < type_of_delivery.length; i++) {
-            if (del[i].checked) {
-                delivery = type_of_delivery[i];
-                break;
-            }
-        }
-        data_submit_form.push(delivery);
-        for (let item of cart.values()) {
-            let i = item["object"]["name_of_product"];
-            list_of_products.push(i);
-        }
-        data_submit_form.push(list_of_products);
-        let sum = total + " ₽";
-        data_submit_form.push(sum);
-
-        saveMessage(data_submit_form);
-
-        ChangeAmountOfGoods();
-    }
-}
-
-function ChangeAmountOfGoods() {
-    getJsonData(pathToJsonWithGoods, JsonFileChange);
-}
-
-async function JsonFileChange(dataGoods) {
-    dataGoods = ChangeCountOfProduct(dataGoods);
-    dataGoods = ChangeState(dataGoods);
-
-    let response = await fetch('/order-confirmed', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(dataGoods)
-    });
-}
-
-function ChangeCountOfProduct(dataGoods) {
-    for (let item of cart.keys()) {
-        if (dataGoods[Math.floor(item / 100) - 1][String(item)]["count_of_product"] > 0) {
-            dataGoods[Math.floor(item / 100) - 1][String(item)]["count_of_product"]--;
-        }
-    }
-    return dataGoods;
-}
-
-function ChangeState(dataGoods) {
-    for (let item of cart.keys()) {
-        if (dataGoods[Math.floor(item / 100) - 1][String(item)]["count_of_product"] === 0) {
-            dataGoods[Math.floor(item / 100) - 1][String(item)]["state"] = "Ожидается поступление";
-        }
-    }
-    return dataGoods;
-}
-
-function getInputVal(id) {
-    return document.getElementById(id).value;
-}
-
-function saveMessage(data_submit_form) {
-    let newMessageRef = messagesRef.push();
-    newMessageRef.set({
-        telephone: data_submit_form[0],
-        address: data_submit_form[1],
-        comment: data_submit_form[2],
-        contact_person: data_submit_form[3],
-        email: data_submit_form[4],
-        delivery: data_submit_form[5],
-        list_of_products: data_submit_form[6],
-        sum: data_submit_form[7]
-    });
-}
-
 function isEmptyObject(obj) {
-    for (var prop in obj) {
+    for (let prop in obj) {
         if (obj.hasOwnProperty(prop)) {
             return false;
         }
@@ -144,7 +14,7 @@ function isEmptyObject(obj) {
 }
 
 function setAttributes(elem, obj) {
-    for (var prop in obj) {
+    for (let prop in obj) {
         if (obj.hasOwnProperty(prop))
             elem[prop] = obj[prop];
     }
@@ -194,66 +64,6 @@ function addOnePurchase (goodInformation) {
         }
     } else {
         increaseNumberOfProducts(id);
-    }
-}
-
-function showInformation (goodInformation) {
-    let modal = document.getElementById("myModal");
-    let btn = document.getElementById(goodInformation["name_of_product"]);
-    let span = document.getElementsByClassName("close")[0];
-
-    function informationOutput() {
-        if (!document.getElementById(goodInformation["name_of_product"] + " name")) {
-            let nameOfProduct = goodInformation["name_of_product"];
-            let descriptionOfProduct = goodInformation["description"];
-            let urlOfProduct = goodInformation["url"];
-
-            let contentHtml = '<p id="' + nameOfProduct + ' name"><strong>Информация о товаре:</strong> ' + nameOfProduct + '</p>' +
-                '<p id="' + nameOfProduct + ' description"><strong>Описание: </strong>' + descriptionOfProduct + '</p>';
-            let imgHtml = '<img id="' + nameOfProduct + ' url" src="' + urlOfProduct + '" alt="image of product" />';
-
-            let modalContent = document.getElementById("modalContent");
-            let imgContent = document.getElementById("imgProduct");
-
-            modalContent.insertAdjacentHTML('beforeend', contentHtml);
-            imgContent.insertAdjacentHTML('beforeend', imgHtml);
-
-            let imageInInformationWindow = document.getElementById(nameOfProduct + " url");
-            imageInInformationWindow.setAttribute("class", "imageInInformationWindow");
-        }
-        else {
-            changeDisplay("block");
-        }
-    }
-
-    function onclick() {
-        modal.style.display = "none";
-        changeDisplay("none");
-    }
-
-    btn.onclick = function() {
-        modal.style.display = "block";
-        informationOutput();
-    }
-
-    span.onclick = function() {
-        onclick();
-    }
-
-    window.onclick = function(event) {
-        if (event.target === modal) {
-            onclick();
-        }
-    }
-
-    function changeDisplay(displayValue) {
-        let nameOfProductCur = document.getElementById(goodInformation["name_of_product"] + " name");
-        let descriptionOfProductCur =  document.getElementById(goodInformation["name_of_product"] + " description");
-        let urlOfProductCur = document.getElementById(goodInformation["name_of_product"] + " url");
-
-        nameOfProductCur.style.display = displayValue;
-        descriptionOfProductCur.style.display = displayValue;
-        urlOfProductCur.style.display = displayValue;
     }
 }
 
@@ -325,7 +135,7 @@ function createItem(goodInformation){
 function getListContent(dataCategory) {
     let goodsList = document.createElement("div");
     goodsList.setAttribute("class","productCategory");
-    for (var key in dataCategory) {
+    for (let key in dataCategory) {
         goodsList.append(createItem(dataCategory[key]));
     }
     return goodsList;
@@ -636,9 +446,9 @@ function searchAndShowGoods (dataGoods) {
     let searchTabNav = document.getElementById("tab-nav-5");
     searchTabNav.checked = true;
 
-    let resultTitle = "";
-    let searchResults = new Object();
-    let searchAdditionalResults = new Object();
+    let resultTitle;
+    let searchResults = {};
+    let searchAdditionalResults = {};
 
     bigramSearchGoods(searchResults, searchAdditionalResults, dataGoods);
 
@@ -657,7 +467,7 @@ function searchAndShowGoods (dataGoods) {
     searchTab.append(getListContent(searchResults));
 
 
-    if (isEmptyObject(searchAdditionalResults) == false) {
+    if (isEmptyObject(searchAdditionalResults) === false) {
         let additionalResultTitleAttributes = ["div","categoryName", "Похожие результаты"];
         let additionalResultTitle = createElementWithAttributes(additionalResultTitleAttributes);
 
